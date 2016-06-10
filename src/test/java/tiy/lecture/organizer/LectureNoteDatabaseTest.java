@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +17,14 @@ import static org.junit.Assert.*;
 /**
  * Created by Sulton on 6/9/2016.
  */
+
 public class LectureNoteDatabaseTest {
+    @Autowired
+    NoteRepository notes;
+
+    @Autowired
+    UserRepository users;
+
     LectureNoteDatabase lectureNoteDatabase;
 
     @Before
@@ -91,4 +99,7 @@ public class LectureNoteDatabaseTest {
        lectureNoteDatabase.deleteNote(conn, firstNote);
         lectureNoteDatabase.deleteNote(conn, secondNote);
     }
+
+
+
 }
