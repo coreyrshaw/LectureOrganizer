@@ -23,7 +23,6 @@ public class DatabaseMain {
 //        while (results.next()) {
 //            String playerName = results.getString("name");
 //
-
         }
     }
 
