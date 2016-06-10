@@ -11,30 +11,30 @@ import javax.servlet.http.HttpSession;
  * Created by Godfather on 6/10/2016.
  */
 @Controller
-public class OranizerController {
+public class LectureOrganizerController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
-        return "home";
+        return "login";
     }
 
-    @RequestMapping(path = "/notes", method = RequestMethod.GET)
-    public String notes(Model model, HttpSession session) {
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String login(Model model, HttpSession session) {
 
         return "notes";
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String login(Model model, HttpSession session) {
+    @RequestMapping(path = "/addnote", method = RequestMethod.GET)
+    public String addnote(Model model, HttpSession session) {
 
-        return "login";
+        return "addnote";
     }
 
-    @RequestMapping(path = "/userLogin", method = RequestMethod.POST)
+    @RequestMapping(path = "/notes", method = RequestMethod.GET)
     public String userLogin(Model model, HttpSession session, String login, String password) {
 
-        return "redirect:/";
+        return "notes";
     }
 
 
