@@ -1,5 +1,6 @@
 package tiy.lecture.organizer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LectureOrganizerController {
 
+    @Autowired
+    NoteRepository notes;
+
+    @Autowired
+    UserRepository users;
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
@@ -20,9 +27,9 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(Model model, HttpSession session) {
+    public String login(Model model, HttpSession session, String userEmail, String userPassword) {
 
-        return "notes";
+        return "redirect:/notes";
     }
 
     @RequestMapping(path = "/addnote", method = RequestMethod.GET)
@@ -32,10 +39,9 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/notes", method = RequestMethod.GET)
-    public String userLogin(Model model, HttpSession session, String login, String password) {
+    public String userLogin(Model model, HttpSession session) {
 
         return "notes";
     }
-
 
 }
