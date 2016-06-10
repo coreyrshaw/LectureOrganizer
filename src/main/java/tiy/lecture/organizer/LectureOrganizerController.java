@@ -19,16 +19,16 @@ public class LectureOrganizerController {
         return "login";
     }
 
-    @RequestMapping(path = "/notes", method = RequestMethod.GET)
-    public String notes(Model model, HttpSession session) {
-
-        return "notes";
-    }
-
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(Model model, HttpSession session) {
 
         return "notes";
+    }
+
+    @RequestMapping(path = "/addnote", method = RequestMethod.GET)
+    public String notes(Model model, HttpSession session) {
+
+        return "addnote";
     }
 
 //    @RequestMapping(path = "/userLogin", method = RequestMethod.POST)
