@@ -50,8 +50,8 @@ public class LectureOrganizerController {
         return "adduser";
     }
 
-    @RequestMapping(path = "/adduser", method = RequestMethod.GET)
-    public String addUser(Model model, HttpSession session) {
+    @RequestMapping(path = "/adduser", method = RequestMethod.POST)
+    public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String DBA, String school, String userPassword) {
 
         return "redirect:/notes";
     }
