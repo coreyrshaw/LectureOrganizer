@@ -102,14 +102,14 @@ public class User {
         this.id = id;
     }
 
-    public User(String email, String password, String dateOfBirth, String cohort,  String firstName, String lastName, Set<Note> notes) {
+    public User(String email, String password, String dateOfBirth, String cohort,  String firstName, String lastName) {
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.cohort = cohort;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.notes = notes;
+
 
     }
 }

@@ -28,6 +28,25 @@ public class Note {
     @Column (nullable = false)
     String noteCode;
 
+    public String getNoteDate() {
+        return noteDate;
+    }
+
+    public void setNoteDate(String noteDate) {
+        this.noteDate = noteDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Column (nullable = false)
+    String noteDate;
+
     public String getNoteComment() {
         return noteComment;
     }
@@ -83,12 +102,14 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, User user) {
+    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, String noteDate , User user) {
         this.noteCode = noteCode;
         this.noteName = noteName;
         this.noteSubject = noteSubject;
         this.noteTag = noteTag;
         this.user = user;
+        this.noteDate = noteDate;
+        this.noteComment = noteComment;
 
     }
 
