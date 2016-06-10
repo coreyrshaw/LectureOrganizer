@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <html lang="en-US" ng-app="TIYAngularApp">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/tiy-ng-controller.js"></script>
+    <link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-controller="SampleController">
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <div ng-if="newUser">
+
+        Welcome, {{newUser.email}}!
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+        <br><br>
+
+    </div>
+
+    <div class="notebox">
+
+        <div class="note-name">
+            <input type="text" style="width: 590px; height: 20px; border-style:solid 2px; border-color:grey; text-align: left;" placeholder="Enter your Notes name"ng-model="newNote.noteName"/>
+        </div>
+
+        <div class="note-subject">
+            <input type="text" style="width: 590px; height: 20px; border-style:solid 2px; border-color:grey; text-align: left;" placeholder="Enter your Notes Subject" ng-model="newNote.noteSubject"></span>
+        </div>
+
+        <div class="note-code">
+            <input type="text" style="width: 590px; height: 100px; border-style:solid 2px; border-color:grey; text-align: left;" placeholder="Enter you notes code" ng-model="newNote.noteCode"/>
+        </div>
+
+        <div class="note-tags">
+            <input type="text" style="width: 590px; height: 20px; border-style:solid 2px; border-color:grey; text-align: left;" placeholder="Enter a tag to associate with your Note" ng-model="newNote.noteTag"/>
+        </div>
+
+        <div class="backtonotes">
+            <form action="/notes">
+                <input type="submit" style="width:120px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;" value="All Notes">
+            </form>
+        </div>
+
+        <div class="add-note-button">
+            <button type="submit" style="width:120px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;" ng-click="addNote()" value="Create new note" >Add Note</button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

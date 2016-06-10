@@ -1,5 +1,48 @@
+<!DOCTYPE html>
 <head>
-    <body>
+<html lang="en-US" ng-app="TIYAngularApp">
+<link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="/js/tiy-ng-controller.js"></script>
+<body ng-controller="SampleController">
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+<div style="position: relative; float: left; width: 100%; padding: 20px;">
+    <div ng-if="newUser">
 
-    </body>
-</head>
+        Welcome, {{newUser.email}}!
+        <form action="/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+        <br><br>
+
+    </div>
+</div>
+
+<div class="note-box">
+
+    <div class="add-note">
+        <form action="/addnote">
+            <input type="submit" style="width:120px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;" value="Add Note">
+        </form>
+    </div>
+
+    <div class="get-notes">
+        <input type="button" style="width:130px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:14px; color:white; background-color: #2EFEC8;" ng-click="getNotes()" value="Refresh Note Data" />
+    </div>
+
+    <ul>
+        <li ng-repeat="note in notes">
+            {{note.noteName}} {{note.noteSubject}} {{note.noteCode}} {{note.noteTag}}
+        </li>
+    </ul>
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>ij1iojq

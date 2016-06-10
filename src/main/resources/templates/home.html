@@ -1,10 +1,33 @@
-<html>
-    <head>
-        <title>Lecture Organizer</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <html lang="en-US" ng-app="TIYAngularApp">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/tiy-ng-controller.js"></script>
+    <link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <div style="text-align: center;">
-            <h1>Lecture Organizer</h1>
+<body ng-controller="SampleController">
+
+<div class="login-action">
+    {{^user}}
+    <form action="/login" method="post">
+
+        <div id="user-email">
+            <input type="text" style="width:380px;" placeholder="Email" name="userEmail" required/>
         </div>
-    </body>
+        <div id="user-password">
+            <input type="password" style="width:380px;" placeholder="Password" name="userPassword" required/>
+        </div>
+
+
+        <div class="login-button">
+            <button type="submit" style="width:130px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;">Login</button>
+        </div>
+
+    </form>
+    {{/user}}
+</div>
+
+
+</body>
 </html>
