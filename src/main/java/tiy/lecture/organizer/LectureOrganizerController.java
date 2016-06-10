@@ -11,12 +11,12 @@ import javax.servlet.http.HttpSession;
  * Created by Godfather on 6/10/2016.
  */
 @Controller
-public class OranizerController {
+public class LectureOrganizerController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
-        return "home";
+        return "login";
     }
 
     @RequestMapping(path = "/notes", method = RequestMethod.GET)
@@ -25,17 +25,17 @@ public class OranizerController {
         return "notes";
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(Model model, HttpSession session) {
 
-        return "login";
+        return "notes";
     }
 
-    @RequestMapping(path = "/userLogin", method = RequestMethod.POST)
-    public String userLogin(Model model, HttpSession session, String login, String password) {
-
-        return "redirect:/";
-    }
+//    @RequestMapping(path = "/userLogin", method = RequestMethod.POST)
+//    public String userLogin(Model model, HttpSession session, String login, String password) {
+//
+//        return "redirect:/";
+//    }
 
 
 }
