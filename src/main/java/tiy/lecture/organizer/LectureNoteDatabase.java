@@ -39,7 +39,7 @@ public class LectureNoteDatabase {
             int id = results.getInt("id");
             String text = results.getString("text");
             String language = results.getString("language");
-            notes.add(new Note(id, text, language));
+            // notes.add(new Note(id, text, language));
         }
         return notes;
     }

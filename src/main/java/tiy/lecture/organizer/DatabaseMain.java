@@ -8,7 +8,7 @@ import java.sql.*;
  * Created by Sulton on 6/9/2016.
  */
 public class DatabaseMain {
-    public static void main(String[] args) throws SQLException {
+    public static void databaseMain(String[] args) throws SQLException {
         Server.createWebServer().start();
 
         Connection conn = DriverManager.getConnection("jdbc:h2:./main");
