@@ -44,4 +44,16 @@ public class LectureOrganizerController {
         return "notes";
     }
 
+    @RequestMapping(path = "/usersignup", method = RequestMethod.GET)
+    public String userSignup(Model model, HttpSession session) {
+
+        return "adduser";
+    }
+
+    @RequestMapping(path = "/adduser", method = RequestMethod.GET)
+    public String addUser(Model model, HttpSession session) {
+
+        return "redirect:/notes";
+    }
+
 }
