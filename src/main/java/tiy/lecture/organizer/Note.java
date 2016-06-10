@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name="notes")
 public class Note {
 
-    @ManyToOne
+    @OneToOne
     User user;
 
     @Id
@@ -27,6 +27,17 @@ public class Note {
 
     @Column (nullable = false)
     String noteCode;
+
+    public String getNoteComment() {
+        return noteComment;
+    }
+
+    public void setNoteComment(String noteComment) {
+        this.noteComment = noteComment;
+    }
+
+    @Column (nullable = false)
+    String noteComment;
 
     public Note() {
 
@@ -72,7 +83,7 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public Note(String noteName, String noteSubject, String noteTag, String noteCode,User user) {
+    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, User user) {
         this.noteCode = noteCode;
         this.noteName = noteName;
         this.noteSubject = noteSubject;
