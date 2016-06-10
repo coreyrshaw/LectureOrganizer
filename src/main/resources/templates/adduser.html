@@ -1,0 +1,56 @@
+<html lang="en-US" ng-app="TIYAngularApp">
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/tiy-ng-controller.js"></script>
+    <link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body ng-controller="SampleController">
+
+<div class="userish user-centered clrfix dark-background puree-v2">
+
+    <div id="user-header">
+        <div style="text-align: center;">
+
+            <span style="font-family: verdana,arial; color: #101010; font-size: .57em 1em; font-weight:500;">Sign up
+            </span>
+
+        </div>
+    </div>
+
+    <form action="/adduser" method="post">
+
+        <div class="pure-g name-field">
+            <div id="fName">
+                <input type="text" placeholder="First name" name="fName" aria-required="true" value maxlength="32"/>
+            </div>
+            <div id="lName">
+                <input type="password" placeholder="Last name" name="lName" aria-required="true" value maxlength="32"/>
+            </div>
+        </div>
+        <div id="user-email">
+            <input type="text" style="width:380px;" placeholder="Email address" name="userEmail" required/>
+        </div>
+        <div id="user-password">
+            <input type="password" style="width:380px;" placeholder="Password" name="userPassword" required/>
+        </div>
+        <div id="DBA">
+            <input type="text" style="width:380px;" placeholder="Birth Month" name="DBA" required/>
+        </div>
+        <div id="school">
+            <input type="password" style="width:380px;" placeholder="School" name="school" required/>
+        </div>
+
+
+        <div class="user-button">
+            <button type="submit" style="width:130px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;">Sign up</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+</body>
+</html>
