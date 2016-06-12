@@ -1,6 +1,8 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Justins PC on 5/22/2016.
@@ -8,6 +10,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="notes")
 public class Note {
+
+    @ManyToMany(mappedBy = "notes")
+    private Set<Tag> tags;
+
+
 
     @OneToOne
     User user;
@@ -113,5 +120,12 @@ public class Note {
 
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
 }
 
