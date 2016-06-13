@@ -94,16 +94,15 @@
 
 <body ng-controller="SampleController">
 
-<!--<div class="login-logoutbar">-->
- <!---->
-        <!--Welcome, User Name-->
-        <!--&lt;!&ndash;{{newUser.email}}!&ndash;&gt;-->
-        <!--<form action="/logout" method="post">-->
-            <!--<button type="submit">Logout</button>-->
-        <!--</form>-->
-        <!--<br><br>-->
+<div ng-if="user">
 
-<!--</div>-->
+    Welcome, {{user.email}}!
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    <br><br>
+
+</div>
 
 
 
@@ -175,11 +174,7 @@
 
 
 
-    <!--     <ul>
-          <li ng-repeat="note in notes">
-              {{note.noteName}} {{note.noteSubject}} {{note.noteCode}} {{note.noteTag}}
-          </li>
-      </ul> -->
+    
 </div>
 
 
