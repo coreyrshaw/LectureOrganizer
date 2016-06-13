@@ -22,11 +22,8 @@ public class LectureOrganizerJSONController {
     @Autowired
     UserRepository users;
 
-    @Autowired
-    TagRepository tags;
-
-    @RequestMapping(path = "/getNotes.json", method = RequestMethod.GET)
-    public ArrayList<Note> jsonNotes() {
+    @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
+    public ArrayList<Note> jsonHome() {
         ArrayList<Note> noteList = new ArrayList<Note>();
         Iterable<Note> allNotes = notes.findAll();
         for (Note note : allNotes) {
@@ -79,15 +76,6 @@ public class LectureOrganizerJSONController {
         return user;
     }
 
-    @RequestMapping(path = "/getTags.json", method = RequestMethod.GET)
-    public ArrayList<Tag> jsonTags() {
-        ArrayList<Tag> tagList = new ArrayList<Tag>();
-        Iterable<Tag> allTags = tags.findAll();
-        for (Tag tag : allTags) {
-            tagList.add(tag);
-        }
 
-        return tagList;
-    }
 
 }
