@@ -36,6 +36,7 @@ public class LectureOrganizerApplicationTests {
 		String noteName = "Learning about doubles";
 		String noteTag = "dataTypes";
 		String noteComment = "I get it";
+		String noteLanguage = "Java";
 
 
 		String email = "elhadi.sulton@gmail.com";
@@ -49,7 +50,7 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject, noteCode, noteDate, noteName, noteTag, noteComment, user);
+		Note note = new Note(noteSubject, noteCode, noteDate, noteName, noteTag, noteComment, noteLanguage, user);
 		notes.save(note);
 
 		Note noteFound = notes.findOne(note.id);
