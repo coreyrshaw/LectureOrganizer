@@ -23,14 +23,6 @@ public class Language {
         this.notes = notes;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public int getId() {
         return id;
     }
@@ -41,8 +33,7 @@ public class Language {
 
 
 
-    @OneToOne
-        User user;
+
 
         @Id
         @GeneratedValue
