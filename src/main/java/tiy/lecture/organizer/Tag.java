@@ -76,7 +76,10 @@ public class Tag {
         String hTML;
 
         @Column(nullable = false)
-        String javaScriptAndCSS;
+        String javaScript;
+
+    @Column(nullable = false)
+    String cSS;
 
         @Column(nullable = false)
         String encapsulation;
@@ -121,15 +124,23 @@ public class Tag {
             this.encapsulation = encapsulation;
         }
 
-        public String getJavaScriptAndCSS() {
-            return javaScriptAndCSS;
-        }
+    public String getJavaScript() {
+        return javaScript;
+    }
 
-        public void setJavaScriptAndCSS(String javaScriptAndCSS) {
-            this.javaScriptAndCSS = javaScriptAndCSS;
-        }
+    public void setJavaScript(String javaScript) {
+        this.javaScript = javaScript;
+    }
 
-        public String gethTML() {
+    public String getcSS() {
+        return cSS;
+    }
+
+    public void setcSS(String cSS) {
+        this.cSS = cSS;
+    }
+
+    public String gethTML() {
             return hTML;
         }
 
@@ -257,7 +268,7 @@ public class Tag {
             this.userInput = userInput;
         }
 
-        public Tag(String primitiveTypes, String userInput, String thread, String libaries, String gettersAndSetters, String dynamicDataStructures, String sQL, String exceptions, String sockets, String gitHub, String inheritance, String unitTesting, String constructors, String javaFX, String hTML, String javaScriptAndCSS, String encapsulation, String cMD, User user) {
+        public Tag(String primitiveTypes, String userInput, String thread, String libaries, String gettersAndSetters, String dynamicDataStructures, String sQL, String exceptions, String sockets, String gitHub, String inheritance, String unitTesting, String constructors, String javaFX, String hTML, String javaScript, String cSS, String encapsulation, String cMD, String looping) {
             this.primitiveTypes = primitiveTypes;
             this.userInput = userInput;
             this.thread = thread;
@@ -273,9 +284,12 @@ public class Tag {
             this.Constructors = constructors;
             this.javaFX = javaFX;
             this.hTML = hTML;
-            this.javaScriptAndCSS = javaScriptAndCSS;
+            this.javaScript = javaScript;
+            this.cSS = cSS;
             this.encapsulation = encapsulation;
             this.cMD = cMD;
+            this.inheritance = inheritance;
+            this.looping = looping;
 
 
         }

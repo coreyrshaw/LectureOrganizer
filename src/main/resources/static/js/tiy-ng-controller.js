@@ -76,8 +76,6 @@ angular.module('TIYAngularApp', [])
         console.log("SampleController ...");
         $scope.name = "James";
 
-        $scope.getUser();
-
         $scope.newNote = {};
     });
 
