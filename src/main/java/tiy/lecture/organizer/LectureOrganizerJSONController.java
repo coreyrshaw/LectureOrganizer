@@ -26,15 +26,15 @@ public class LectureOrganizerJSONController {
     TagRepository tags;
 
     @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
-    public
-//        ArrayList<Note> noteList = new ArrayList<Note>();
-//        Iterable<Note> allNotes = notes.findAll();
-//        for (Note note : allNotes) {
-//            noteList.add(note);
-//        }
-//
-//        return noteList;
-//    }
+    public ArrayList<Note> jsonNotes() {
+    ArrayList<Note> noteList = new ArrayList<Note>();
+        Iterable<Note> allNotes = notes.findAll();
+        for (Note note : allNotes) {
+            noteList.add(note);
+        }
+
+        return noteList;
+    }
 
     ArrayList<Note> getAllNotes() {
         ArrayList<Note> noteList = new ArrayList<Note>();
