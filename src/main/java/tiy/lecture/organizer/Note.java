@@ -1,7 +1,6 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,7 +13,16 @@ public class Note {
     @ManyToMany(mappedBy = "notes")
     private Set<Tag> tags;
 
+    @ManyToMany
+    private Set<Language>languages;
 
+    public Set<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Set<Language> languages) {
+        this.languages = languages;
+    }
 
     @OneToOne
     User user;
@@ -24,10 +32,10 @@ public class Note {
     int id;
 
     @Column(nullable = false)
-    String noteName;
+    String noteTitle;
 
     @Column(nullable = false)
-    String noteSubject;
+    String noteText;
 
     @Column (nullable = false)
     String noteTag;
@@ -67,16 +75,6 @@ public class Note {
     @Column (nullable = false)
     String noteDate;
 
-    public String getNoteComment() {
-        return noteComment;
-    }
-
-    public void setNoteComment(String noteComment) {
-        this.noteComment = noteComment;
-    }
-
-    @Column (nullable = false)
-    String noteComment;
 
     public Note() {
 
@@ -90,20 +88,12 @@ public class Note {
         this.id = id;
     }
 
-    public String getNoteName() {
-        return noteName;
+    public String getNoteText() {
+        return noteText;
     }
 
-    public void setNoteName(String noteName) {
-        this.noteName = noteName;
-    }
-
-    public String getNoteSubject() {
-        return noteSubject;
-    }
-
-    public void setNoteSubject(String noteSubject) {
-        this.noteSubject = noteSubject;
+    public void setNoteText(String noteText) {
+        this.noteText = noteText;
     }
 
     public String getNoteTag() {
@@ -122,14 +112,13 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, String noteDate , String noteLanguage, User user) {
+    public Note( String noteText, String noteTag, String noteCode, String noteDate , String noteLanguage,String noteTitle, User user) {
         this.noteCode = noteCode;
-        this.noteName = noteName;
-        this.noteSubject = noteSubject;
+        this.noteText = noteText;
         this.noteTag = noteTag;
         this.user = user;
+        this.noteTitle = noteTitle;
         this.noteDate = noteDate;
-        this.noteComment = noteComment;
         this.noteLanguage = noteLanguage;
 
 

@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +25,10 @@ public class LectureOrganizerApplicationTests {
 	@Autowired
 	UserRepository users;
 
-	LectureNoteDatabase lectureNoteDatabase;
+	@Autowired
+	LanguageRepository languages;
+
+
 
 	@Test
 	public void contextLoads() {
@@ -47,7 +49,6 @@ public class LectureOrganizerApplicationTests {
 		String noteDate = "6/10/2016";
 		String noteName = "Learning about doubles";
 		String noteTag = "dataTypes";
-		String noteComment = "I get it";
 		String noteLanguage = "Java";
 
 
@@ -62,7 +63,7 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject, noteCode, noteDate, noteName, noteTag, noteComment, noteLanguage, user);
+		Note note = new Note(noteSubject, noteCode, noteDate, noteName, noteTag, noteLanguage, user);
 		notes.save(note);
 
 		Note noteFound = notes.findOne(note.id);
@@ -84,30 +85,12 @@ public class LectureOrganizerApplicationTests {
 
 	@Test
 	public void testAddNoteTag() throws Exception {
-		String noteUserInput = "userInput";
-		String sql = "post gre";
-		String cmd = "cmd";
-		String primitiveType = "types";
-		String encapsulation = "encapsulation";
-		String Css = "css";
-		String javaScript = "javaScript";
-		String html = "html";
-		String javaFx = "Fx";
-		String constructors = "constructors";
-		String unitTest = "unit test";
-		String gitHub = "gitHub";
-		String inhereitance = "inher";
-		String sockets = "sockets";
-		String exceptions = "exceptions";
-		String dynamicData = "dynamicData";
-		String getterAndSetters = "getters";
-		String libariers = "libaries";
-		String thread = "thread";
-		String looping = "looping";
+		String noteTag = "userInput";
 
 
 
-		Tag tag = new Tag(cmd, noteUserInput, sql, primitiveType, encapsulation, Css, html, javaFx, constructors, unitTest, gitHub, inhereitance, sockets, exceptions, dynamicData, getterAndSetters, libariers, thread, looping, javaScript);
+
+		Tag tag = new Tag(noteTag);
 		tags.save(tag);
 
 		Tag tagFound = tags.findOne(tag.id);
@@ -117,6 +100,23 @@ public class LectureOrganizerApplicationTests {
 
 
 		tags.delete(tag);
+
+	}
+	@Test
+	public void testAddLanguage() throws Exception {
+		String lang = "Python";
+		String lang2 = "Ruby";
+
+		Language language = new Language(lang);
+		languages.save(language);
+
+		Language languagesFound = languages.findOne(language.id);
+		System.out.println("==============" + language.id + " " + languagesFound.id);
+		assertEquals(language.id, language.id);
+
+
+
+		languages.delete(language);
 
 	}
 

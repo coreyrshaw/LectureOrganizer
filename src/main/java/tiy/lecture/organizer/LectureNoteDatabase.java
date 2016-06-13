@@ -16,6 +16,8 @@ public class LectureNoteDatabase {
         Connection conn = DriverManager.getConnection(DB_URL);
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS notes (id IDENTITY, text VARCHAR, language VARCHAR)");
+
+
     }
 
     public void insertNote(Connection conn, String text) throws SQLException {
