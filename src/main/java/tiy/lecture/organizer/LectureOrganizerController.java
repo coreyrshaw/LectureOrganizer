@@ -27,6 +27,10 @@ public class LectureOrganizerController {
             User user = new User();
             user.email = "Admin";
             user.password = "test123";
+            user.dateOfBirth = "01/01/0001";
+            user.cohort = "TIY";
+            user.firstName = "Admin";
+            user.lastName = "Admin";
             users.save(user);
         }
     }

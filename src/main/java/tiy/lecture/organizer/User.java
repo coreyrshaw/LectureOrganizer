@@ -111,9 +111,4 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
 }
