@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -19,6 +20,16 @@ public class LectureOrganizerController {
 
     @Autowired
     UserRepository users;
+
+    @PostConstruct
+    public void init() {
+        if (users.count() == 0) {
+            User user = new User();
+            user.email = "Admin";
+            user.password = "test123";
+            users.save(user);
+        }
+    }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
