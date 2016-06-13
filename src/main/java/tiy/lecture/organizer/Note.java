@@ -35,6 +35,8 @@ public class Note {
     @Column (nullable = false)
     String noteCode;
 
+
+
     public String getNoteLanguage() {
         return noteLanguage;
     }
@@ -129,6 +131,7 @@ public class Note {
         this.noteDate = noteDate;
         this.noteComment = noteComment;
         this.noteLanguage = noteLanguage;
+
 
     }
 

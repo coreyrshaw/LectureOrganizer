@@ -28,6 +28,10 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
     @Query("SELECT g FROM Note g WHERE g.noteName Like ?1% ")
     List<Note>findByNoteStartWith(String note);
 
+    @Query("SELECT g FROM Note g WHERE g.noteTag Like ?1% ")
+    List<Note>findByTag(String tag);
+
+
 //    @Query("SELECT g FROM Tag g WHERE g.getNotes Like ?1% ")
 //    List<Tag>findByTag(String tag);
 
