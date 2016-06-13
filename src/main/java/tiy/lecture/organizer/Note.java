@@ -1,6 +1,8 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Justins PC on 5/22/2016.
@@ -8,6 +10,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="notes")
 public class Note {
+
+    @ManyToMany(mappedBy = "notes")
+    private Set<Tag> tags;
+
+
 
     @OneToOne
     User user;
@@ -27,6 +34,19 @@ public class Note {
 
     @Column (nullable = false)
     String noteCode;
+
+
+
+    public String getNoteLanguage() {
+        return noteLanguage;
+    }
+
+    public void setNoteLanguage(String noteLanguage) {
+        this.noteLanguage = noteLanguage;
+    }
+
+    @Column (nullable = false)
+    String noteLanguage;
 
     public String getNoteDate() {
         return noteDate;
@@ -102,7 +122,7 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, String noteDate , User user) {
+    public Note(String noteName, String noteSubject, String noteTag, String noteCode,String noteComment, String noteDate , String noteLanguage, User user) {
         this.noteCode = noteCode;
         this.noteName = noteName;
         this.noteSubject = noteSubject;
@@ -110,8 +130,17 @@ public class Note {
         this.user = user;
         this.noteDate = noteDate;
         this.noteComment = noteComment;
+        this.noteLanguage = noteLanguage;
+
 
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
 }
 

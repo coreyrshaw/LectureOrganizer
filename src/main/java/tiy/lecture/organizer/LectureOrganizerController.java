@@ -27,9 +27,27 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(Model model, HttpSession session, String userEmail, String userPassword) {
+    public String login(Model model, HttpSession session, String userEmail, String userPassword) throws Exception {
 
-        return "redirect:/notes";
+        User user = users.findByEmail(userEmail);
+        if (!userPassword.equals(user.getPassword())) {
+            throw new Exception("Incorrect password");
+        }
+//        if (user == null) {
+//            user = new User(userEmail, userPassword);
+//            users.save(user);
+//        } else if (!userPassword.equals(user.getPassword())) {
+//            throw new Exception("Incorrect password");
+//        }
+        session.setAttribute("user", user);
+
+        return "notes";
+    }
+
+    @RequestMapping(path = "/logout", method = RequestMethod.POST)
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 
     @RequestMapping(path = "/addnote", method = RequestMethod.GET)
@@ -53,6 +71,9 @@ public class LectureOrganizerController {
     @RequestMapping(path = "/adduser", method = RequestMethod.POST)
     public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String DBA, String school, String userPassword) {
 
+        User user = new User(userEmail, userPassword, DBA, school, fName, lName);
+        users.save(user);
+        session.setAttribute("user", user);
         return "redirect:/notes";
     }
 
