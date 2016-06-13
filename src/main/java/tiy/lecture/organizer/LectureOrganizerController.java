@@ -30,18 +30,18 @@ public class LectureOrganizerController {
     public String login(Model model, HttpSession session, String userEmail, String userPassword) throws Exception {
 
         User user = users.findByEmail(userEmail);
+
         if (!userPassword.equals(user.getPassword())) {
             throw new Exception("Incorrect password");
         }
-//        if (user == null) {
-//            user = new User(userEmail, userPassword);
-//            users.save(user);
+//        if (!userEmail.equals(user.getEmail())) {
+//            throw new Exception("Incorrect email");
 //        } else if (!userPassword.equals(user.getPassword())) {
 //            throw new Exception("Incorrect password");
 //        }
         session.setAttribute("user", user);
 
-        return "notes";
+        return "redirect:/notes";
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
@@ -76,5 +76,15 @@ public class LectureOrganizerController {
         session.setAttribute("user", user);
         return "redirect:/notes";
     }
+
+//    ArrayList<User> getAllUsers() {
+//        ArrayList<User> userList = new ArrayList<User>();
+//        Iterable<User> allUsers = users.findAll();
+//        for (User user : allUsers) {
+//            userList.add(user);
+//        }
+//
+//        return userList;
+//    }
 
 }
