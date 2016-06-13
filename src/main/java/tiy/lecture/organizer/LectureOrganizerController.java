@@ -41,7 +41,7 @@ public class LectureOrganizerController {
 //        }
         session.setAttribute("user", user);
 
-        return "redirect:/notes";
+        return "notes";
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
@@ -71,7 +71,7 @@ public class LectureOrganizerController {
     @RequestMapping(path = "/adduser", method = RequestMethod.POST)
     public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String DBA, String school, String userPassword) {
 
-        User user = new User(fName, lName, userEmail, DBA, school, userPassword);
+        User user = new User(userEmail, userPassword, DBA, school, fName, lName);
         users.save(user);
         session.setAttribute("user", user);
         return "redirect:/notes";

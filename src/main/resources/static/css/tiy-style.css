@@ -58,6 +58,7 @@
   float: right;
   padding: 18px 3px;
 }
+
 .login-action{
   margin: auto;
   border-style: solid;
@@ -68,6 +69,7 @@
   height: 200px;
   padding: 10px;
 }
+
 #user-email{
   padding:10px;
   margin: auto
