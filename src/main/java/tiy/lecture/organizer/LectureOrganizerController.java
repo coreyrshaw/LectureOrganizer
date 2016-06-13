@@ -38,20 +38,24 @@ public class LectureOrganizerController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
+        String errorMessage = (String)session.getAttribute("error");
+        if (errorMessage != null) {
+            model.addAttribute("error", errorMessage);
+        }
+
         return "login";
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(Model model, HttpSession session, String userEmail, String userPassword) throws Exception {
+    public String login(Model model, HttpSession session, String userEmail, String userPassword) {
 
         User user = users.findByEmail(userEmail);
 
-        if (!userPassword.equals(user.getPassword())) {
-            throw new Exception("Incorrect password");
+        if (user == null || !userPassword.equals(user.getPassword())) {
+            String errorMessage = "Login error - please check your credentials and try again";
+            session.setAttribute("error", errorMessage);
+            return "redirect:/";
         }
-//        if (!userEmail.equals(user.getEmail())) {
-//            throw new Exception("Incorrect email");
-
             session.setAttribute("user", user);
 
         return "redirect:/notes";
@@ -89,15 +93,4 @@ public class LectureOrganizerController {
         session.setAttribute("user", user);
         return "redirect:/notes";
     }
-
-//    ArrayList<User> getAllUsers() {
-//        ArrayList<User> userList = new ArrayList<User>();
-//        Iterable<User> allUsers = users.findAll();
-//        for (User user : allUsers) {
-//            userList.add(user);
-//        }
-//
-//        return userList;
-//    }
-
 }
