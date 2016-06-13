@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,6 +21,20 @@ public class LectureOrganizerController {
     @Autowired
     UserRepository users;
 
+    @PostConstruct
+    public void init() {
+        if (users.count() == 0) {
+            User user = new User();
+            user.email = "Admin";
+            user.password = "test123";
+            user.dateOfBirth = "01/01/0001";
+            user.cohort = "TIY";
+            user.firstName = "Admin";
+            user.lastName = "Admin";
+            users.save(user);
+        }
+    }
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
@@ -30,19 +45,16 @@ public class LectureOrganizerController {
     public String login(Model model, HttpSession session, String userEmail, String userPassword) throws Exception {
 
         User user = users.findByEmail(userEmail);
+
         if (!userPassword.equals(user.getPassword())) {
             throw new Exception("Incorrect password");
-        } else {
-//        if (user == null) {
-//            user = new User(userEmail, userPassword);
-//            users.save(user);
-//        } else if (!userPassword.equals(user.getPassword())) {
-//            throw new Exception("Incorrect password");
-//        }
-            session.setAttribute("user", user);
         }
+//        if (!userEmail.equals(user.getEmail())) {
+//            throw new Exception("Incorrect email");
 
-        return "notes";
+            session.setAttribute("user", user);
+
+        return "redirect:/notes";
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
@@ -77,5 +89,15 @@ public class LectureOrganizerController {
         session.setAttribute("user", user);
         return "redirect:/notes";
     }
+
+//    ArrayList<User> getAllUsers() {
+//        ArrayList<User> userList = new ArrayList<User>();
+//        Iterable<User> allUsers = users.findAll();
+//        for (User user : allUsers) {
+//            userList.add(user);
+//        }
+//
+//        return userList;
+//    }
 
 }
