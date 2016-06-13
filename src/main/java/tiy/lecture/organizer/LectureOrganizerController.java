@@ -36,10 +36,8 @@ public class LectureOrganizerController {
         }
 //        if (!userEmail.equals(user.getEmail())) {
 //            throw new Exception("Incorrect email");
-//        } else if (!userPassword.equals(user.getPassword())) {
-//            throw new Exception("Incorrect password");
-//        }
-        session.setAttribute("user", user);
+
+            session.setAttribute("user", user);
 
         return "redirect:/notes";
     }
