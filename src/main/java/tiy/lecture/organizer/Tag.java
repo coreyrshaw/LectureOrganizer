@@ -268,7 +268,7 @@ public class Tag {
             this.userInput = userInput;
         }
 
-        public Tag(String primitiveTypes, String userInput, String thread, String libaries, String gettersAndSetters, String dynamicDataStructures, String sQL, String exceptions, String sockets, String gitHub, String inheritance, String unitTesting, String constructors, String javaFX, String hTML, String javaScript, String cSS, String encapsulation, String cMD) {
+        public Tag(String primitiveTypes, String userInput, String thread, String libaries, String gettersAndSetters, String dynamicDataStructures, String sQL, String exceptions, String sockets, String gitHub, String inheritance, String unitTesting, String constructors, String javaFX, String hTML, String javaScript, String cSS, String encapsulation, String cMD, String looping) {
             this.primitiveTypes = primitiveTypes;
             this.userInput = userInput;
             this.thread = thread;
@@ -288,6 +288,8 @@ public class Tag {
             this.cSS = cSS;
             this.encapsulation = encapsulation;
             this.cMD = cMD;
+            this.inheritance = inheritance;
+            this.looping = looping;
 
 
         }

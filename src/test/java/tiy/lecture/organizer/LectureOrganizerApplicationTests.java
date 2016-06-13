@@ -86,7 +86,7 @@ public class LectureOrganizerApplicationTests {
 	public void testAddNoteTag() throws Exception {
 		String noteUserInput = "userInput";
 		String sql = "post gre";
-		String cdm = "cmd";
+		String cmd = "cmd";
 		String primitiveType = "types";
 		String encapsulation = "encapsulation";
 		String Css = "css";
@@ -107,7 +107,7 @@ public class LectureOrganizerApplicationTests {
 
 
 
-		Tag tag = new Tag(noteUserInput, sql, primitiveType, encapsulation, Css, html, javaFx, constructors, unitTest, gitHub, inhereitance, sockets, exceptions, dynamicData, getterAndSetters, libariers, thread, looping, javaScript);
+		Tag tag = new Tag(cmd, noteUserInput, sql, primitiveType, encapsulation, Css, html, javaFx, constructors, unitTest, gitHub, inhereitance, sockets, exceptions, dynamicData, getterAndSetters, libariers, thread, looping, javaScript);
 		tags.save(tag);
 
 		Tag tagFound = tags.findOne(tag.id);
