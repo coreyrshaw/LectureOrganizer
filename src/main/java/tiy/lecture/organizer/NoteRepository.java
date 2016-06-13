@@ -14,8 +14,8 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
 //    List<Note> findByTag(String noteTag);
 //    List<Note>fineByUser(User user);
 
-    @Query("SELECT g FROM Note g WHERE g.noteSubject LIKE ?1%")
-    List<Note> findBySubject(String noteSubject);
+    @Query("SELECT g FROM Note g WHERE g.noteTitle LIKE ?1%")
+    List<Note> findByTitle(String noteTitle);
 
     @Query("SELECT g FROM Note g WHERE g.noteLanguage LIKE ?1%")
     List<Note> findByLanguage(String noteLanguage);
@@ -25,7 +25,7 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
 
     List<Note>findByUser(User user);
 
-    @Query("SELECT g FROM Note g WHERE g.noteName Like ?1% ")
+    @Query("SELECT g FROM Note g WHERE g.noteTitle Like ?1% ")
     List<Note>findByNoteStartWith(String note);
 
     @Query("SELECT g FROM Note g WHERE g.noteTag Like ?1% ")

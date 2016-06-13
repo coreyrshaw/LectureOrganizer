@@ -22,9 +22,12 @@ public class LectureOrganizerJSONController {
     @Autowired
     UserRepository users;
 
+    @Autowired
+    TagRepository tags;
+
     @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
-    public ArrayList<Note> jsonHome() {
-        ArrayList<Note> noteList = new ArrayList<Note>();
+    public ArrayList<Note> jsonNotes() {
+    ArrayList<Note> noteList = new ArrayList<Note>();
         Iterable<Note> allNotes = notes.findAll();
         for (Note note : allNotes) {
             noteList.add(note);
@@ -47,7 +50,7 @@ public class LectureOrganizerJSONController {
     public ArrayList<Note> EditNote(int noteID) {
         System.out.println("editing note with ID " + noteID);
         Note note = notes.findOne(noteID);
-        note.noteName = "**" + note.noteName;
+        note.noteTitle = "**" + note.noteTitle;
         notes.save(note);
 
         return getAllNotes();
@@ -69,11 +72,22 @@ public class LectureOrganizerJSONController {
         return getAllNotes();
     }
 
-    @RequestMapping(path = "/getUser.json", method = RequestMethod.POST)
+    @RequestMapping(path = "/getUser.json", method = RequestMethod.GET)
     public User getUser(HttpSession session, Model model) throws Exception {
         User user = (User)session.getAttribute("user");
         System.out.println(user);
         return user;
+    }
+
+    @RequestMapping(path = "/tags.json", method = RequestMethod.GET)
+    public ArrayList<Tag> getAllTags() {
+        ArrayList<Tag> tagList = new ArrayList<Tag>();
+        Iterable<Tag> allTags = tags.findAll();
+        for (Tag tag : allTags) {
+            tagList.add(tag);
+        }
+
+        return tagList;
     }
 
 

@@ -1,7 +1,6 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -111,7 +110,5 @@ public class User {
         this.cohort = cohort;
         this.firstName = firstName;
         this.lastName = lastName;
-
-
     }
 }
