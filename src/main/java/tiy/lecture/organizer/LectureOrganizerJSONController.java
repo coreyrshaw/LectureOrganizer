@@ -76,4 +76,6 @@ public class LectureOrganizerJSONController {
         return user;
     }
 
+
+
 }
