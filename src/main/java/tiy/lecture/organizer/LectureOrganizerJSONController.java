@@ -50,7 +50,7 @@ public class LectureOrganizerJSONController {
     public ArrayList<Note> EditNote(int noteID) {
         System.out.println("editing note with ID " + noteID);
         Note note = notes.findOne(noteID);
-        note.noteName = "**" + note.noteName;
+        note.noteTitle = "**" + note.noteTitle;
         notes.save(note);
 
         return getAllNotes();
