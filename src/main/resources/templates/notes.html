@@ -1,47 +1,182 @@
 <!DOCTYPE html>
-<head>
 <html lang="en-US" ng-app="TIYAngularApp">
-<link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="/js/tiy-ng-controller.js"></script>
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/tiy-ng-controller.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
+
+<style>
+
+    .note-box{
+      border-style: solid;
+      border-size: 2px;
+      border-color: grey;
+      margin: auto;
+      width: 70%;
+      height: 500px;
+      }
+
+      #topics{
+      float:left;
+      width: 100%;
+      height: 50px;
+
+      }
+
+      #langauges{
+      float:left;
+      width: 100%;
+      height: 50px;
+
+      }
+      .space{
+       padding-top: 5px;
+      }
+
+      .searchparams {
+      width: 15%;
+      float: left;
+      height: 85%;
+      border-right:solid grey 2px;
+      border-bottom:solid grey 2px;
+      padding: 0px; !important
+
+      }
+
+      #note-list{
+      width: 85%;
+      height: 85%;
+      border-bottom:solid grey 2px;
+      float: right;
+      }
+
+      #button-holder{
+      width: 85%;
+      float:right;
+      height: 15%;
+      background-color:white;
+
+      }
+
+      #topicsthing{
+      float:left;
+      width:100%;
+      }
+
+      #getNote{
+      float: right;
+      height: 50px;
+      margin-top: 13px;
+      margin-right: 10px;
+      margin-left: 10px;
+
+      }
+
+      #addNote{
+      float: right;
+      height: 50px;
+      margin-top: 13px;
+      margin-right: 10px;
+      margin-left: 10px;
+      }
+      #noteheader{
+      text-align: center;
+      }
+      .note{
+      width: 100% !important;
+      padding: 0px !important;
+      }
+
+  </style>
+</head>
+
 <body ng-controller="SampleController">
-{{! changing the mustache delimiter so it doesn't conflict with  }}
-{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
-{{=<% %>=}}
-<div style="position: relative; float: left; width: 100%; padding: 20px;">
-    <div ng-if="newUser">
 
-        Welcome, {{newUser.email}}!
-        <form action="/logout" method="post">
-            <button type="submit">Logout</button>
-        </form>
-        <br><br>
+<div ng-if="user">
 
-    </div>
+    Welcome, {{user.email}}!
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    <br><br>
+
 </div>
+
+
+
 
 <div class="note-box">
 
-    <div class="add-note">
-        <form action="/addnote">
-            <input type="submit" style="width:120px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;" value="Add Note">
-        </form>
+    <div class="container searchparams">
+
+        <div class="dropdown" id="topicsthing">
+
+            <button class="btn btn-default dropdown-toggle" type="button" id="topics" data-toggle="dropdown">Topics
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Primitive Types</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="langauges" data-toggle="dropdown"><L>Languages</L>
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="langauges">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Java</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">BootStrap</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Python</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ruby</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">PHP</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Android Studio</a></li>
+                <li role="presentation"><a role="menuitem">
+            </ul>
+        </div>
     </div>
 
-    <div class="get-notes">
-        <input type="button" style="width:130px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:14px; color:white; background-color: #2EFEC8;" ng-click="getNotes()" value="Refresh Note Data" />
+    <div class="container" id="note-list">
+        <div class="note">
+            <div class="panel-group">
+                <div class="panel panel-default note">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" id="noteheader">
+                            <a data-toggle="collapse" href="#collapse1">Note Title/Date/Tags</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body"><code>
+                            System.out.println("This Is Code");
+                        </code></div><div class="panel-footer">Panel Footer</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <ul>
-        <li ng-repeat="note in notes">
-            {{note.noteName}} {{note.noteSubject}} {{note.noteCode}} {{note.noteTag}}
-        </li>
-    </ul>
+    <div class="container" id="button-holder">
+
+        <button ng-click="getNotes()" class="btn btn-success" id="getNote" value="Refresh Notes">Get Notes</button>
+
+
+
+        <button ng-click="createNotes()" class="btn btn-success" id="addNote"
+                value="Create Notes">Add Note</button>
+
+    </div>
+
+
+
+
+
+    
 </div>
 
-</div>
-
-</div>
 
 </body>
 
