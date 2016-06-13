@@ -9,9 +9,9 @@
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
 <div style="position: relative; float: left; width: 100%; padding: 20px;">
-    <div ng-if="user">
+    <div ng-if="newUser">
 
-        Welcome, {{user.email}}!
+        Welcome, {{newUser.email}}!
         <form action="/logout" method="post">
             <button type="submit">Logout</button>
         </form>
