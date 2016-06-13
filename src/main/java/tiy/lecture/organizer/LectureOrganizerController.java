@@ -38,6 +38,10 @@ public class LectureOrganizerController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
 
+        if (session.getAttribute("user") != null) {
+            model.addAttribute("user", session.getAttribute("user"));
+        }
+
         String errorMessage = (String)session.getAttribute("error");
         if (errorMessage != null) {
             model.addAttribute("error", errorMessage);
@@ -57,6 +61,7 @@ public class LectureOrganizerController {
             return "redirect:/";
         }
             session.setAttribute("user", user);
+            model.addAttribute(user);
 
         return "redirect:/notes";
     }
@@ -74,8 +79,9 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/notes", method = RequestMethod.GET)
-    public String userLogin(Model model, HttpSession session) {
-
+    public String userLogin(Model model, HttpSession session,User user) {
+        user = (User) session.getAttribute("user");
+        model.addAttribute(user);
         return "notes";
     }
 
