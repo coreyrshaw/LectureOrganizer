@@ -32,14 +32,15 @@ public class LectureOrganizerController {
         User user = users.findByEmail(userEmail);
         if (!userPassword.equals(user.getPassword())) {
             throw new Exception("Incorrect password");
-        }
+        } else {
 //        if (user == null) {
 //            user = new User(userEmail, userPassword);
 //            users.save(user);
 //        } else if (!userPassword.equals(user.getPassword())) {
 //            throw new Exception("Incorrect password");
 //        }
-        session.setAttribute("user", user);
+            session.setAttribute("user", user);
+        }
 
         return "notes";
     }

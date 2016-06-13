@@ -4,29 +4,81 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="/js/tiy-ng-controller.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/tiy-style.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+
+    .container{
+    border-style:solid;
+    border-size: 1px;
+    border-color: grey;
+    border-radius: 10px;
+    width: 40%;
+    margin:auto;
+    height: 340px;
+   }
+
+   .space{
+    padding-top: 20px;
+    }
+    .login-button{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    }
+    .user-header{
+    text-align: center;
+    font-family: "Verdana", Verdana, serif;
+    font-size: 30px;
+    font-style: bold;
+    }
+    .signup{
+    text-align: center;
+    font-family: "Verdana", Verdana, serif;
+    font-size: 15px;
+    font-style: bold;
+    }
+  </style>
+
     </head>
 <body ng-controller="SampleController">
 
-<div class="login-action">
-    {{^user}}
+<div class="container">
     <form action="/login" method="post">
 
-        <div id="login-header">
-            <div style="text-align: center;">
-                <div style="background: #6E6E6E; border-radius: 10px 15px 0px 0px; padding: 15px; margin: auto">
-                    <span style="font-family: verdana,arial; color: #D4D4D4; font-size: 1.00em; font-weight:bold;">Enter your email login and password
-                    </span>
-                </div>
-            </div>
+        <div class="space">
+        </div>
+        <div class="user-header">
+
+
+            <span>Login
+            </span>
+
+
         </div>
 
-        <div id="user-email">
-            <input type="text" style="width:380px;" placeholder="Email" name="userEmail" required/>
+
+        <div id="form-group">
+            <label for="email">
+                Email:
+            </label>
+            <input type="text" id="email" class="form-control" name="userEmail" required/>
         </div>
-        <div id="user-password">
-            <input type="password" style="width:380px;" placeholder="Password" name="userPassword" required/>
+        <div class="space">
         </div>
+
+
+        <div id="form-group">
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" class="form-control" id="password" name="userPassword" required/>
+        </div>
+
+        <div class="login-button">
+            <button type="submit"class="btn btn-success btn-lg btn-block">Login</button>
+        </div>
+
 
         <div class="signup">
             <div style="text-align: center;">
@@ -34,14 +86,10 @@
             </div>
         </div>
 
-        <div class="login-button">
-            <button type="submit" style="width:130px; height:50px; border:solid 2px; border-radius:20px; border-color:grey; font-size:16px; color:white; background-color: #2EFEC8;">Login</button>
-        </div>
-
     </form>
-    {{/user}}
 </div>
 
 
 </body>
+
 </html>
