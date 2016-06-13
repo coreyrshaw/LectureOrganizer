@@ -12,11 +12,14 @@
     .container{
     border-style:solid;
     border-size: 1px;
-    border-color: grey;
+    border-color: black;
     border-radius: 10px;
     width: 40%;
     margin:auto;
     height: 340px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
    }
 
    .space{
@@ -38,10 +41,17 @@
     font-size: 15px;
     font-style: bold;
     }
+    .headerspace{
+     padding-top:100px;
+    }
   </style>
 
     </head>
 <body ng-controller="SampleController">
+
+<div class="headerspace">
+
+</div>
 
 <div class="container">
     <form action="/login" method="post">
