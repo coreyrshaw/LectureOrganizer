@@ -16,21 +16,6 @@ angular.module('TIYAngularApp', [])
                 })
        };
 
-       $scope.getUser = function() {
-       console.log("About to get the user");
-       $http.post("/getUser.json",$scope.newUser)
-                .then(
-                function successCallback(response) {
-                    console.log(response.data);
-                    console.log("getting the user");
-
-                    $scope.newUser = response.data;
-                },
-                function errorCallback(response) {
-                    console.log("Unable to get user")
-                });
-       }
-
        $scope.getTags = function() {
               console.log("About to get tags");
               $http.get("/tags.json")
