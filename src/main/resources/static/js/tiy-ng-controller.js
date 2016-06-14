@@ -29,9 +29,22 @@ angular.module('TIYAngularApp', [])
                 function errorCallback(response) {
                     console.log("Unable to get user")
                 });
-
-
        }
+
+       $scope.topics = function() {
+              console.log("About to get tags");
+              $http.post("/tags.json",$scope.topics)
+                       .then(
+                       function successCallback(response) {
+                           console.log(response.data);
+                           console.log("getting tags");
+
+                           $scope.topics = response.data;
+                       },
+                       function errorCallback(response) {
+                           console.log("Unable to get tags")
+                       });
+              }
 
        $scope.addNote = function() {
        console.log("About to add the following note " + JSON.stringify($scope.newNote));
@@ -70,6 +83,7 @@ angular.module('TIYAngularApp', [])
                });
 
        }
+       
 
 
 

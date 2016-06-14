@@ -25,8 +25,11 @@ public class LectureOrganizerJSONController {
     @Autowired
     TagRepository tags;
 
+    @Autowired
+    LanguageRepository langs;
+
     @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
-    public ArrayList<Note> jsonNotes() {
+    public ArrayList<Note> jsonNotes() throws Exception{
     ArrayList<Note> noteList = new ArrayList<Note>();
         Iterable<Note> allNotes = notes.findAll();
         for (Note note : allNotes) {
@@ -89,6 +92,31 @@ public class LectureOrganizerJSONController {
 
         return tagList;
     }
+
+    @RequestMapping(path = "/tagNotes.json", method = RequestMethod.GET)
+    public ArrayList<Note> getTaggedNote(String tag) throws Exception {
+        ArrayList<Note> tagNoteList = new ArrayList<Note>();
+        Iterable<Note> allTaggedNotes = notes.findByTag(tag);
+        for (Note tagNote : allTaggedNotes) {
+            tagNoteList.add(tagNote);
+        }
+
+        return tagNoteList;
+
+    }
+
+    @RequestMapping(path = "/language.json", method = RequestMethod.GET)
+    public ArrayList<Language> getLanguages() {
+        ArrayList<Language> languageList = new ArrayList<Language>();
+        Iterable<Language> allLanguages = langs.findAll();
+        for (Language currentLang : allLanguages) {
+            languageList.add(currentLang);
+        }
+
+        return languageList;
+    }
+
+
 
 
 
