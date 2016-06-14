@@ -30,7 +30,6 @@ public class LectureOrganizerApplicationTests {
 	LanguageRepository languages;
 
 
-
 	@Test
 	public void contextLoads() {
 	}
@@ -89,8 +88,6 @@ public class LectureOrganizerApplicationTests {
 		String noteTag = "userInput";
 
 
-
-
 		Tag tag = new Tag(noteTag);
 		tags.save(tag);
 
@@ -99,10 +96,10 @@ public class LectureOrganizerApplicationTests {
 		assertEquals(tag.id, tagFound.id);
 
 
-
 		tags.delete(tag);
 
 	}
+
 	@Test
 	public void testAddLanguage() throws Exception {
 		String lang = "Python";
@@ -113,8 +110,7 @@ public class LectureOrganizerApplicationTests {
 
 		Language languagesFound = languages.findOne(language.id);
 		System.out.println("==============" + language.id + " " + languagesFound.id);
-		assertEquals(language.id, language.id);
-
+		assertEquals(language.id, languagesFound.id);
 
 
 		languages.delete(language);
@@ -143,21 +139,20 @@ public class LectureOrganizerApplicationTests {
 		users.save(user);
 
 
-
 		Language language = new Language(noteLang);
+
 		languages.save(language);
 
 		Note note = new Note(noteLang, noteTag, noteCode, noteDate, noteTitle, noteText, user);
 
 
-
-
 		Language languagesFound = languages.findOne(language.id);
 		System.out.println("==============" + language.id + " " + languagesFound.id);
-		assertEquals(language.id, language.id);
+		assertEquals(language.id, languagesFound.id);
 
 //		Language noteLanguage = note.;
 		note.addLanguage(language);
+
 		notes.save(note);
 
 
@@ -168,5 +163,41 @@ public class LectureOrganizerApplicationTests {
 
 	}
 
+	@Test
+	public void testAddAndRetrieveTags() throws Exception {
+		String tag1 = "UserInput";
+		String tag2 = "PrimitiveTypes";
+		String tag3 = "Css";
 
+
+		ArrayList<Tag> tagArrayList = new ArrayList<Tag>();
+
+		Tag firstTag = new Tag(tag1);
+		Tag secondTag = new Tag(tag2);
+		Tag thirdTag = new Tag(tag3);
+
+		tagArrayList.add(firstTag);
+		tagArrayList.add(secondTag);
+		tagArrayList.add(thirdTag);
+
+		tags.save(firstTag);
+		tags.save(secondTag);
+		tags.save(thirdTag);
+
+		Tag tag1Found = tags.findOne(firstTag.id);
+		System.out.println("==============" + firstTag.id + " " + tag1Found.id);
+		Tag tag2Found = tags.findOne(secondTag.id);
+		System.out.println("==============" + secondTag.id + " " + tag2Found.id);
+		Tag tag3Found = tags.findOne(thirdTag.id);
+		System.out.println("==============" + thirdTag.id + " " + tag3Found.id);
+
+		assertEquals(firstTag.id, tag1Found.id);
+		assertEquals(secondTag.id, tag2Found.id);
+		assertEquals(thirdTag.id, tag3Found.id);
+
+		tags.delete(firstTag);
+		tags.delete(secondTag);
+		tags.delete(thirdTag);
+
+	}
 }

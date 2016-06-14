@@ -31,18 +31,31 @@ angular.module('TIYAngularApp', [])
                 });
        }
 
-       $scope.topics = function() {
+       $scope.getTags = function() {
               console.log("About to get tags");
-              $http.post("/tags.json",$scope.topics)
+              $http.get("/tags.json")
                        .then(
                        function successCallback(response) {
                            console.log(response.data);
                            console.log("getting tags");
-
-                           $scope.topics = response.data;
+                           $scope.tags = response.data;
                        },
                        function errorCallback(response) {
                            console.log("Unable to get tags")
+                       });
+              }
+
+       $scope.getLanguages = function() {
+              console.log("About to get tags");
+              $http.get("/languages.json")
+                       .then(
+                       function successCallback(response) {
+                           console.log(response.data);
+                           console.log("getting languages");
+                           $scope.languages = response.data;
+                       },
+                       function errorCallback(response) {
+                           console.log("Unable to get languages")
                        });
               }
 
@@ -88,7 +101,6 @@ angular.module('TIYAngularApp', [])
 
         console.log("SampleController ...");
         $scope.name = "James";
-
         $scope.newNote = {};
     });
 
