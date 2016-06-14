@@ -75,9 +75,10 @@ public class LectureOrganizerJSONController {
         return getAllNotes();
     }
 
-    @RequestMapping(path = "/getUser.json", method = RequestMethod.GET)
+    @RequestMapping(path = "/getUser.json", method = RequestMethod.POST)
     public User getUser(HttpSession session, Model model) throws Exception {
         User user = (User)session.getAttribute("user");
+        model.addAttribute(user);
         System.out.println(user);
         return user;
     }
