@@ -75,13 +75,6 @@ public class LectureOrganizerJSONController {
         return getAllNotes();
     }
 
-    @RequestMapping(path = "/getUser.json", method = RequestMethod.GET)
-    public User getUser(HttpSession session, Model model) throws Exception {
-        User user = (User)session.getAttribute("user");
-        System.out.println(user);
-        return user;
-    }
-
     @RequestMapping(path = "/tags.json", method = RequestMethod.GET)
     public ArrayList<Tag> getAllTags() {
         ArrayList<Tag> tagList = new ArrayList<Tag>();
@@ -111,6 +104,16 @@ public class LectureOrganizerJSONController {
             languageList.add(currentLang);
         }
         return languageList;
+    }
+
+    @RequestMapping(path = "/datedNotes.json", method = RequestMethod.GET)
+    public ArrayList<Note> getDatedNotes(String noteDate) throws Exception {
+        ArrayList<Note> datedNoteList = new ArrayList<Note>();
+        Iterable<Note> allDatedNotes = notes.findByDate(noteDate);
+        for (Note datedNote : allDatedNotes) {
+            datedNoteList.add(datedNote);
+        }
+        return datedNoteList;
     }
 
 
