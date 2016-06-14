@@ -25,9 +25,6 @@ public class LectureOrganizerJSONController {
     @Autowired
     TagRepository tags;
 
-    @Autowired
-    LanguageRepository languages;
-
     @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
     public ArrayList<Note> jsonNotes() {
     ArrayList<Note> noteList = new ArrayList<Note>();
@@ -91,17 +88,6 @@ public class LectureOrganizerJSONController {
         }
 
         return tagList;
-    }
-
-    @RequestMapping(path = "/languages.json", method = RequestMethod.GET)
-    public ArrayList<Language> getAllLanguages() {
-        ArrayList<Language> languageList = new ArrayList<Language>();
-        Iterable<Language> allLangauges = languages.findAll();
-        for (Language language : allLangauges) {
-            languageList.add(language);
-        }
-
-        return languageList;
     }
 
 
