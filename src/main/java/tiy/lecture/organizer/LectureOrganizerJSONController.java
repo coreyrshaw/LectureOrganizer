@@ -100,9 +100,7 @@ public class LectureOrganizerJSONController {
         for (Note tagNote : allTaggedNotes) {
             tagNoteList.add(tagNote);
         }
-
         return tagNoteList;
-
     }
 
     @RequestMapping(path = "/language.json", method = RequestMethod.GET)
@@ -112,7 +110,6 @@ public class LectureOrganizerJSONController {
         for (Language currentLang : allLanguages) {
             languageList.add(currentLang);
         }
-
         return languageList;
     }
 

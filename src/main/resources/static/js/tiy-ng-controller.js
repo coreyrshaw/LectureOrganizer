@@ -46,8 +46,8 @@ angular.module('TIYAngularApp', [])
               }
 
        $scope.getLanguages = function() {
-              console.log("About to get tags");
-              $http.get("/languages.json")
+              console.log("About to get languages");
+              $http.get("/language.json")
                        .then(
                        function successCallback(response) {
                            console.log(response.data);
