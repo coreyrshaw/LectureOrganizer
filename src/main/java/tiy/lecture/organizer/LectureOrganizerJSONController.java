@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -107,9 +108,9 @@ public class LectureOrganizerJSONController {
     }
 
     @RequestMapping(path = "/datedNotes.json", method = RequestMethod.GET)
-    public ArrayList<Note> getDatedNotes(String noteDate) throws Exception {
+    public ArrayList<Note> getDatedNotes(LocalDateTime created_at) throws Exception {
         ArrayList<Note> datedNoteList = new ArrayList<Note>();
-        Iterable<Note> allDatedNotes = notes.findByDate(noteDate);
+        Iterable<Note> allDatedNotes = notes.findByDate(created_at);
         for (Note datedNote : allDatedNotes) {
             datedNoteList.add(datedNote);
         }
