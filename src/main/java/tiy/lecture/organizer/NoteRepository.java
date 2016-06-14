@@ -3,6 +3,7 @@ package tiy.lecture.organizer;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,8 +21,8 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
     @Query("SELECT g FROM Note g WHERE g.noteLanguage LIKE ?1%")
     List<Note> findByLanguage(String noteLanguage);
 
-    @Query("SELECT g FROM Note g WHERE g.noteDate LIKE ?1%")
-    List<Note> findByDate(String noteDate);
+    @Query("SELECT g FROM Note g WHERE g.created_at LIKE ?1%")
+    List<Note> findByDate(LocalDateTime created_at);
 
     List<Note>findByUser(User user);
 
