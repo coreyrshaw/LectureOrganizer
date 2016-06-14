@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -117,6 +118,53 @@ public class LectureOrganizerApplicationTests {
 
 
 		languages.delete(language);
+
+	}
+
+	@Test
+	public void testAddLanguageAndNote() throws Exception {
+		String noteLang = "Python";
+
+		String noteTitle = "UserInput";
+		String noteText = "hi";
+		String noteDate = "6/7/1666";
+		String noteTag = "input";
+		String noteCode = "System.out";
+
+		String email = "elhadi.sulton@gmail.com";
+		String password = "sultone";
+		String dateOfBirth = "12/02/1995";
+		String cohort = "Iron Yard";
+		String firstName = "Sulton";
+		String lastName = "Elhadi";
+
+
+		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
+		users.save(user);
+
+
+
+		Language language = new Language(noteLang);
+		languages.save(language);
+
+		Note note = new Note(noteLang, noteTag, noteCode, noteDate, noteTitle, noteText, user);
+
+
+
+
+		Language languagesFound = languages.findOne(language.id);
+		System.out.println("==============" + language.id + " " + languagesFound.id);
+		assertEquals(language.id, language.id);
+
+//		Language noteLanguage = note.;
+		note.addLanguage(language);
+		notes.save(note);
+
+
+		notes.delete(note);
+		languages.delete(language);
+
+		users.delete(user);
 
 	}
 

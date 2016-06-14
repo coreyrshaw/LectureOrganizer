@@ -21,6 +21,12 @@ public class LectureOrganizerController {
     @Autowired
     UserRepository users;
 
+    @Autowired
+    TagRepository tags;
+
+    @Autowired
+    LanguageRepository languages;
+
     @PostConstruct
     public void init() {
         if (users.count() == 0) {
@@ -32,6 +38,42 @@ public class LectureOrganizerController {
             user.firstName = "Admin";
             user.lastName = "Admin";
             users.save(user);
+
+        }
+    }
+
+    @PostConstruct
+    public void addTopicsDef()  {
+        if(tags.count() ==0) {
+            Tag tag = new Tag();
+            tag.name = "Heroku";
+            Tag tagTwo = new Tag();
+            tagTwo.name = "SQL";
+            Tag tagThree = new Tag();
+            tagThree.name = "Spring";
+            tags.save(tagThree);
+            tags.save(tagTwo);
+            tags.save(tag);
+        }
+    }
+
+    @PostConstruct
+    public void addLanguages() {
+        if(languages.count()==0) {
+            Language language = new Language("Java");
+            Language languageTwo = new Language("Java Fx");
+            Language languageThree = new Language("PHP");
+            Language languageFour = new Language("CSS");
+            Language languageFive = new Language("Phython");
+            Language languageSix = new Language("SQL");
+            Language languageSeven = new Language("Html");
+            languages.save(language);
+            languages.save(languageTwo);
+            languages.save(languageThree);
+            languages.save(languageFour);
+            languages.save(languageFive);
+            languages.save(languageSix);
+            languages.save(languageSeven);
         }
     }
 

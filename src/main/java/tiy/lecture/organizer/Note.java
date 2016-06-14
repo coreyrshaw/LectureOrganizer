@@ -1,6 +1,7 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,6 +23,20 @@ public class Note {
 
     public void setLanguages(Set<Language> languages) {
         this.languages = languages;
+    }
+
+    public void addLanguage(Language language) {
+        if (languages == null) {
+            languages = new HashSet<Language>();
+        }
+
+        languages.add(language);
+    }
+
+    public void removeLanguage(Language language) {
+        if (languages != null) {
+            languages.remove(language);
+        }
     }
 
     @OneToOne
