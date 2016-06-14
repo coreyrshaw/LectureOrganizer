@@ -1,6 +1,8 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,13 +73,7 @@ public class Note {
     @Column (nullable = false)
     String noteLanguage;
 
-    public String getNoteDate() {
-        return noteDate;
-    }
 
-    public void setNoteDate(String noteDate) {
-        this.noteDate = noteDate;
-    }
 
     public User getUser() {
         return user;
@@ -88,7 +84,7 @@ public class Note {
     }
 
     @Column (nullable = false)
-    String noteDate;
+    LocalDateTime created_at;
 
 
     public Note() {
@@ -127,13 +123,21 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public Note( String noteText, String noteTag, String noteCode, String noteDate , String noteLanguage,String noteTitle, User user) {
+    public LocalDateTime getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
+
+    public Note(String noteText, String noteTag, String noteCode, LocalDateTime created_at , String noteLanguage, String noteTitle, User user) {
         this.noteCode = noteCode;
         this.noteText = noteText;
         this.noteTag = noteTag;
         this.user = user;
         this.noteTitle = noteTitle;
-        this.noteDate = noteDate;
+        this.created_at = created_at;
         this.noteLanguage = noteLanguage;
 
 

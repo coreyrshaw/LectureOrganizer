@@ -7,7 +7,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 import static junit.framework.TestCase.assertNotNull;
@@ -46,7 +49,7 @@ public class LectureOrganizerApplicationTests {
 
 		String noteSubject = "primitivetype";
 		String noteCode = "double";
-		String noteDate = "6/10/2016";
+		LocalDateTime created_at = LocalDateTime.now();
 		String noteName = "Learning about doubles";
 		String noteTag = "dataTypes";
 		String noteLanguage = "Java";
@@ -63,7 +66,7 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject, noteCode, noteDate, noteName, noteTag, noteLanguage, user);
+		Note note = new Note(noteSubject, noteTag, noteCode, created_at, noteName,  noteLanguage, user);
 		notes.save(note);
 
 		Note noteFound = notes.findOne(note.id);
@@ -73,6 +76,8 @@ public class LectureOrganizerApplicationTests {
 		User noteUser = note.getUser();
 		assertNotNull(noteUser);
 		assertEquals(user.getId(), noteUser.getId());
+
+	
 
 //		Set<Note> noteList = noteUser.getNotes();
 //		assertNotNull(noteList);
@@ -123,7 +128,7 @@ public class LectureOrganizerApplicationTests {
 
 		String noteTitle = "UserInput";
 		String noteText = "hi";
-		String noteDate = "6/7/1666";
+		LocalDateTime created_at = LocalDateTime.now();
 		String noteTag = "input";
 		String noteCode = "System.out";
 
@@ -143,7 +148,7 @@ public class LectureOrganizerApplicationTests {
 
 		languages.save(language);
 
-		Note note = new Note(noteLang, noteTag, noteCode, noteDate, noteTitle, noteText, user);
+		Note note = new Note(noteLang, noteTag, noteCode, created_at, noteTitle, noteText, user);
 
 
 		Language languagesFound = languages.findOne(language.id);
