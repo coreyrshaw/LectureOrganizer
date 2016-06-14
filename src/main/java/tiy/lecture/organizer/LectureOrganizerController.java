@@ -97,6 +97,7 @@ public class LectureOrganizerController {
         User user = new User(userEmail, userPassword, DBA, school, fName, lName);
         users.save(user);
         session.setAttribute("user", user);
+        model.addAttribute(user);
         return "redirect:/notes";
     }
 }
