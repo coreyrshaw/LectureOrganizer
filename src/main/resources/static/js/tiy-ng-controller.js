@@ -16,33 +16,22 @@ angular.module('TIYAngularApp', [])
                 })
        };
 
-       $scope.getTags = function() {
-              console.log("About to get tags");
-              $http.get("/tags.json")
-                       .then(
-                       function successCallback(response) {
-                           console.log(response.data);
-                           console.log("getting tags");
-                           $scope.tags = response.data;
-                       },
-                       function errorCallback(response) {
-                           console.log("Unable to get tags")
-                       });
-              }
+       $scope.getUser = function() {
+       console.log("About to get the user");
+       $http.post("/getUser.json",$scope.newUser)
+                .then(
+                function successCallback(response) {
+                    console.log(response.data);
+                    console.log("getting the user");
 
-       $scope.getLanguages = function() {
-              console.log("About to get languages");
-              $http.get("/language.json")
-                       .then(
-                       function successCallback(response) {
-                           console.log(response.data);
-                           console.log("getting languages");
-                           $scope.languages = response.data;
-                       },
-                       function errorCallback(response) {
-                           console.log("Unable to get languages")
-                       });
-              }
+                    $scope.newUser = response.data;
+                },
+                function errorCallback(response) {
+                    console.log("Unable to get user")
+                });
+
+
+       }
 
        $scope.addNote = function() {
        console.log("About to add the following note " + JSON.stringify($scope.newNote));
@@ -86,6 +75,7 @@ angular.module('TIYAngularApp', [])
 
         console.log("SampleController ...");
         $scope.name = "James";
+
         $scope.newNote = {};
     });
 
