@@ -103,7 +103,7 @@
       }
 
       .note-form{
-      height: 700px !important;
+      height: 800px !important;
 
       }
 
@@ -209,56 +209,69 @@
                     <div class="form-group">
                     <label for="title"> Title:
                         </label>
-                    <input type="text" class="form-control" id="title">
+                    <input type="text" class="form-control" id="title" ng-model="newNote.noteTitle">
                     </div>
 
-                    <div class="form-group">
-                    <label for="date"> Date:
-                    </label>
-                    <input type="datetime-local" class="form-control" id="date">
+                    <!--<div class="form-group">-->
+                    <!--<label for="date"> Date:-->
+                    <!--</label>-->
+                    <!--<input type="date" class="form-control" id="date" ng-model="newNote.created_at">-->
+                    <!--</div>-->
+
+                    <div class="space">
                     </div>
 
                     <div class="dropdown" id="topic-picker">
-                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="pick-topic" data-toggle="dropdown">Topic
+                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="pick-topic" data-toggle="dropdown">Topics
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-                            <li ng-repeat="tag in tags" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
+                            <li ng-repeat="tag in tags" ng-model="newNote.noteTag" role="presentation" ng-click="toggleTopic(tag)">
+                                <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected">-</span></a>
+                            </li>
                         </ul>
                     </div>
-                    <div class="space">
 
+                    <div>
+                        Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}"> {{tag.name}} * </span>
                     </div>
+
+                    <div class="space">
+                    </div>
+
                     <div class="dropdown" id="language-picker">
                         <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="pick-language" data-toggle="dropdown"><L>Language</L>
                             <span class="caret"></span></button>
                         <ul id="pick-lang-list" class="dropdown-menu" role="menu" aria-labelledby="langauges">
-                            <li  ng-repeat="language in languages" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
-                            </ul>
+                            <li  ng-repeat="language in languages"  ng-model="newNote.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected">-</span></a>
+                            </li>
+                        </ul>
                     </div>
+
+                    <div>
+                        Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
+                    </div>
+
 
 
                     <div class="form-group">
                         <label for="code"> Code:
                         </label>
-                        <textarea rows="8" class="form-control" id="code"></textarea>
+                        <textarea rows="8" class="form-control" id="code" ng-model="newNote.noteCode"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="text"> Text/Comments:
                         </label>
-                        <textarea rows="8" class="form-control" id="text"></textarea>
+                        <textarea rows="8" class="form-control" id="text"ng-model="newNote.noteText"></textarea>
                     </div>
-
-
-
-
 
                 </form>
 
             </div>
             <div class="modal-footer">
                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <button ng-click="createNotes()" class="btn btn-success" id="addNote"
+                <button ng-click="addNote()" class="btn btn-success" id="addNote"
                         value="Create Notes">Add Note</button>
             </div>
 
