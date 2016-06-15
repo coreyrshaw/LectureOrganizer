@@ -70,7 +70,7 @@ public class LectureOrganizerJSONController {
 
     @RequestMapping(path = "/addNote.json", method = RequestMethod.POST)
     public ArrayList<Note> addNote(HttpSession session, @RequestBody Note note) throws Exception {
-        System.out.
+
         notes.save(note);
 
         return getAllNotes();
@@ -88,7 +88,7 @@ public class LectureOrganizerJSONController {
     }
 
     @RequestMapping(path = "/tagNotes.json", method = RequestMethod.GET)
-    public ArrayList<Note> getTaggedNote(String tag) throws Exception {
+    public ArrayList<Note> getTaggedNote(Tag tag) throws Exception {
         ArrayList<Note> tagNoteList = new ArrayList<Note>();
         Iterable<Note> allTaggedNotes = notes.findByTag(tag);
         for (Note tagNote : allTaggedNotes) {
@@ -105,16 +105,6 @@ public class LectureOrganizerJSONController {
             languageList.add(currentLang);
         }
         return languageList;
-    }
-
-    @RequestMapping(path = "/datedNotes.json", method = RequestMethod.GET)
-    public ArrayList<Note> getDatedNotes(LocalDateTime created_at) throws Exception {
-        ArrayList<Note> datedNoteList = new ArrayList<Note>();
-        Iterable<Note> allDatedNotes = notes.findByDate(created_at);
-        for (Note datedNote : allDatedNotes) {
-            datedNoteList.add(datedNote);
-        }
-        return datedNoteList;
     }
 
 
