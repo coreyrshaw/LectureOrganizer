@@ -66,18 +66,20 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject, noteTag, noteCode, created_at, noteName,  noteLanguage, user);
+		Note note = new Note(noteSubject,  noteCode,  noteName, user);
 		notes.save(note);
 
 		Note noteFound = notes.findOne(note.id);
 		System.out.println("==============" + note.id + " " + noteFound.id);
 		assertEquals(note.id, noteFound.id);
 
+
+
 		User noteUser = note.getUser();
 		assertNotNull(noteUser);
 		assertEquals(user.getId(), noteUser.getId());
 
-	
+
 
 //		Set<Note> noteList = noteUser.getNotes();
 //		assertNotNull(noteList);
@@ -108,7 +110,7 @@ public class LectureOrganizerApplicationTests {
 	@Test
 	public void testAddLanguage() throws Exception {
 		String lang = "Python";
-		String lang2 = "Ruby";
+
 
 		Language language = new Language(lang);
 		languages.save(language);
@@ -148,7 +150,7 @@ public class LectureOrganizerApplicationTests {
 
 		languages.save(language);
 
-		Note note = new Note(noteLang, noteTag, noteCode, created_at, noteTitle, noteText, user);
+		Note note = new Note(noteCode, noteTitle, noteText, user);
 
 
 		Language languagesFound = languages.findOne(language.id);

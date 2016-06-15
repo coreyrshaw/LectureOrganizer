@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -71,10 +70,7 @@ public class LectureOrganizerJSONController {
 
     @RequestMapping(path = "/addNote.json", method = RequestMethod.POST)
     public ArrayList<Note> addNote(HttpSession session, @RequestBody Note note) throws Exception {
-//        Note aNote = new Note();
-//        LocalDateTime now = aNote.getCreated_at();
-//        DateTimeFormatter myFormatter = DateTimeFormatter.ofPattern("M/dd/YYYY");
-//        System.out.println(now.format(myFormatter));
+        System.out.
         notes.save(note);
 
         return getAllNotes();
@@ -111,7 +107,15 @@ public class LectureOrganizerJSONController {
         return languageList;
     }
 
-
+    @RequestMapping(path = "/datedNotes.json", method = RequestMethod.GET)
+    public ArrayList<Note> getDatedNotes(LocalDateTime created_at) throws Exception {
+        ArrayList<Note> datedNoteList = new ArrayList<Note>();
+        Iterable<Note> allDatedNotes = notes.findByDate(created_at);
+        for (Note datedNote : allDatedNotes) {
+            datedNoteList.add(datedNote);
+        }
+        return datedNoteList;
+    }
 
 
 
