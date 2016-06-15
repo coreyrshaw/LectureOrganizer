@@ -30,16 +30,9 @@ public class Tag {
         @Column(nullable = false)
         String name;
 
-
-
-
-
-
         public Tag() {
 
         }
-
-
     public int getId() {
         return id;
     }
