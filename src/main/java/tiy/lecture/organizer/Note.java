@@ -54,24 +54,12 @@ public class Note {
     @Column(nullable = false)
     String noteText;
 
-    @Column (nullable = false)
-    String noteTag;
 
     @Column (nullable = false)
     String noteCode;
 
 
 
-    public String getNoteLanguage() {
-        return noteLanguage;
-    }
-
-    public void setNoteLanguage(String noteLanguage) {
-        this.noteLanguage = noteLanguage;
-    }
-
-    @Column (nullable = false)
-    String noteLanguage;
 
 
 
@@ -83,8 +71,7 @@ public class Note {
         this.user = user;
     }
 
-    @Column (nullable = false)
-    LocalDateTime created_at;
+
 
 
     public Note() {
@@ -107,14 +94,6 @@ public class Note {
         this.noteText = noteText;
     }
 
-    public String getNoteTag() {
-        return noteTag;
-    }
-
-    public void setNoteTag(String noteTag) {
-        this.noteTag = noteTag;
-    }
-
     public String getNoteCode() {
         return noteCode;
     }
@@ -123,22 +102,14 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
-    }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
-    }
 
-    public Note(String noteText, String noteTag, String noteCode, LocalDateTime created_at , String noteLanguage, String noteTitle, User user) {
+    public Note(String noteText, String noteCode, String noteTitle, User user) {
         this.noteCode = noteCode;
         this.noteText = noteText;
-        this.noteTag = noteTag;
         this.user = user;
         this.noteTitle = noteTitle;
-        this.created_at = created_at;
-        this.noteLanguage = noteLanguage;
+
 
 
     }
