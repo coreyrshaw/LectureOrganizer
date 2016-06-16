@@ -130,8 +130,7 @@ public class LectureOrganizerApplicationTests {
 
 		String noteTitle = "UserInput";
 		String noteText = "hi";
-		LocalDateTime created_at = LocalDateTime.now();
-		String noteTag = "input";
+
 		String noteCode = "System.out";
 
 		String email = "elhadi.sulton@gmail.com";
