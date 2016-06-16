@@ -127,46 +127,30 @@ public class LectureOrganizerApplicationTests {
 	@Test
 	public void testAddLanguageAndNote() throws Exception {
 		String noteLang = "Python";
-
 		String noteTitle = "UserInput";
 		String noteText = "hi";
 
 		String noteCode = "System.out";
-
 		String email = "elhadi.sulton@gmail.com";
 		String password = "sultone";
 		String dateOfBirth = "12/02/1995";
 		String cohort = "Iron Yard";
 		String firstName = "Sulton";
 		String lastName = "Elhadi";
-
-
 		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
 		users.save(user);
-
-
 		Language language = new Language(noteLang);
-
 		languages.save(language);
-
 		Note note = new Note(noteCode, noteTitle, noteText, user);
-
-
 		Language languagesFound = languages.findOne(language.id);
 		System.out.println("==============" + language.id + " " + languagesFound.id);
 		assertEquals(language.id, languagesFound.id);
-
 //		Language noteLanguage = note.;
 		note.addLanguage(language);
-
 		notes.save(note);
-
-
 		notes.delete(note);
 		languages.delete(language);
-
 		users.delete(user);
-
 	}
 
 	@Test
