@@ -129,6 +129,7 @@ public class LectureOrganizerApplicationTests {
 		String noteLang = "Python";
 		String noteTitle = "UserInput";
 		String noteText = "hi";
+
 		String noteCode = "System.out";
 		String email = "elhadi.sulton@gmail.com";
 		String password = "sultone";
