@@ -89,51 +89,6 @@
       .footer{
        padding-top: 70px;
       }
-<<<<<<< HEAD
-=======
-
-      #openAddNote{
-       float: right;
-       height: 50px;
-       margin-top: 13px;
-       margin-right: 10px;
-       margin-left: 10px;
-      }
-
-      .addNoteModal{
-        padding-bottom: 50px !important;
-
-      }
-
-      .note-form{
-      height: 800px !important;
-
-      }
-
-      #pick-topic{
-      padding:0px !important;
-      width: 100%;
-      height: 40px;
-      }
-
-      #pick-language{
-      padding:0px !important;
-      width: 100%;
-      height: 40px;
-      }
-      .space{
-      padding-top:15px;
-      }
-
-      .note-heading{
-      width: 100% !important;
-      padding: 0px !important;
-      }
-
-
-
-
->>>>>>> 9cfe1a1bf95eb911c2bbbdc9dcda94d70f2aea7e
   </style>
     </head>
 
@@ -197,93 +152,10 @@
     </div>
 
     <div class="container" id="button-holder">
-<<<<<<< HEAD
 
         <button ng-click="getNotes()" class="btn btn-success" id="getNote" value="Refresh Notes">Get Notes</button>
 
 
-=======
-        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addNoteModal" id="openAddNote">Add Note</button>
-    </div>
-</div>
-<div id="addNoteModal" class="modal fade" role="dialog">
-    <div class="modal-dialog addNoteModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Create New Note</h4>
-            </div>
-            <div class="modal-body note-form">
-                <form>
-                    <div class="form-group">
-                    <label for="title"> Title:
-                        </label>
-                    <input type="text" class="form-control" id="title" ng-model="newNote.noteTitle">
-                    </div>
-
-                    <!--<div class="form-group">-->
-                    <!--<label for="date"> Date:-->
-                    <!--</label>-->
-                    <!--<input type="date" class="form-control" id="date" ng-model="newNote.created_at">-->
-                    <!--</div>-->
-
-                    <div class="space">
-                    </div>
-
-                    <div class="dropdown" id="topic-picker">
-                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="pick-topic" data-toggle="dropdown">Topics
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-                            <li ng-repeat="tag in tags" ng-model="newNote.noteTag" role="presentation" ng-click="toggleTopic(tag)">
-                                <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected">-</span></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}"> {{tag.name}} * </span>
-                    </div>
-
-                    <div class="space">
-                    </div>
-
-                    <div class="dropdown" id="language-picker">
-                        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="pick-language" data-toggle="dropdown"><L>Language</L>
-                            <span class="caret"></span></button>
-                        <ul id="pick-lang-list" class="dropdown-menu" role="menu" aria-labelledby="langauges">
-                            <li  ng-repeat="language in languages"  ng-model="newNote.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected">-</span></a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="code"> Code:
-                        </label>
-                        <textarea rows="8" class="form-control" id="code" ng-model="newNote.noteCode"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="text"> Text/Comments:
-                        </label>
-                        <textarea rows="8" class="form-control" id="text"ng-model="newNote.noteText"></textarea>
-                    </div>
-
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <button ng-click="addNote()" class="btn btn-success" id="addNote"
-                        value="Create Notes">Add Note</button>
-            </div>
->>>>>>> 9cfe1a1bf95eb911c2bbbdc9dcda94d70f2aea7e
 
         <button ng-click="createNotes()" class="btn btn-success" id="addNote"
                 value="Create Notes">Add Note</button>
