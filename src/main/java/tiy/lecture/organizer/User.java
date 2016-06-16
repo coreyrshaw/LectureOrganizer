@@ -26,8 +26,6 @@ public class User {
     @Column(nullable = false)
     String password;
 
-    @Column(nullable = false)
-    String dateOfBirth;
 
     @Column(nullable = false)
     String firstName;
@@ -38,13 +36,7 @@ public class User {
     @Column(nullable = false)
     String cohort;
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -103,10 +95,9 @@ public class User {
         this.id = id;
     }
 
-    public User(String email, String password, String dateOfBirth, String cohort,  String firstName, String lastName) {
+    public User(String email, String password, String cohort,  String firstName, String lastName) {
         this.email = email;
         this.password = password;
-        this.dateOfBirth = dateOfBirth;
         this.cohort = cohort;
         this.firstName = firstName;
         this.lastName = lastName;

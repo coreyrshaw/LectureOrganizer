@@ -33,7 +33,6 @@ public class LectureOrganizerController {
             User user = new User();
             user.email = "Admin";
             user.password = "test123";
-            user.dateOfBirth = "01/01/0001";
             user.cohort = "TIY";
             user.firstName = "Admin";
             user.lastName = "Admin";
@@ -137,8 +136,8 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/adduser", method = RequestMethod.POST)
-    public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String DBA, String school, String userPassword) {
-        User user = new User(userEmail, userPassword, DBA, school, fName, lName);
+    public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String school, String userPassword) {
+        User user = new User(userEmail, userPassword, school, fName, lName);
         System.out.println("<===============================================================>");
         System.out.println("New users first name: " + user.firstName.toString());
         System.out.println("New users last name: " + user.lastName.toString());

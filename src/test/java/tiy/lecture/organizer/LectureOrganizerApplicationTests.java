@@ -63,7 +63,7 @@ public class LectureOrganizerApplicationTests {
 		String lastName = "Elhadi";
 
 
-		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
+		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
 
 		Note note = new Note(noteSubject,  noteCode,  noteName, user);
@@ -136,7 +136,7 @@ public class LectureOrganizerApplicationTests {
 		String cohort = "Iron Yard";
 		String firstName = "Sulton";
 		String lastName = "Elhadi";
-		User user = new User(email, password, dateOfBirth, cohort, firstName, lastName);
+		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
 		Language language = new Language(noteLang);
 		languages.save(language);
