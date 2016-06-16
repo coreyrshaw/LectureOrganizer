@@ -2,19 +2,18 @@ package tiy.lecture.organizer;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Justins PC on 5/22/2016.
- */
+
 @Entity
 @Table(name="notes")
 public class Note {
 
-    @ManyToMany(mappedBy = "notes")
-    private Set<Tag> tags;
+    @ManyToMany
+    private Collection<Tag> tags;
 
     @ManyToMany
     private Set<Language>languages;
@@ -41,7 +40,7 @@ public class Note {
         }
     }
 
-    @OneToOne
+    @ManyToOne
     User user;
 
     @Id
@@ -113,16 +112,13 @@ public class Note {
         this.noteText = noteText;
         this.user = user;
         this.noteTitle = noteTitle;
-
-
-
     }
 
-    public Set<Tag> getTags() {
+    public Collection<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Set<Tag> tags) {
+    public void setTags(Collection<Tag> tags) {
         this.tags = tags;
     }
 }

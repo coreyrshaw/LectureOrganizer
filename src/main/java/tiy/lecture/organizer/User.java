@@ -3,9 +3,6 @@ package tiy.lecture.organizer;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Justins PC on 5/23/2016.
- */
 @Entity
 @Table(name = "users")
 public class User {

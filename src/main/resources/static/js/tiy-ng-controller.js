@@ -53,8 +53,6 @@ angular.module('TIYAngularApp', [])
               }
 
        }
-
-
        $scope.addNote = function() {
        var tagsToAdd = [];
        var languagesToAdd = [];

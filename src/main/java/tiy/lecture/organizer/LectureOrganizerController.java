@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by Godfather on 6/10/2016.
- */
 @Controller
 public class LectureOrganizerController {
 

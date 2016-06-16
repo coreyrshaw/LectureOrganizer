@@ -5,9 +5,6 @@ import org.h2.tools.Server;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- * Created by Sulton on 6/9/2016.
- */
 public class LectureNoteDatabase {
     public final static String DB_URL = "jdbc:h2:./main";
 
@@ -16,7 +13,6 @@ public class LectureNoteDatabase {
         Connection conn = DriverManager.getConnection(DB_URL);
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS notes (id IDENTITY, text VARCHAR, language VARCHAR)");
-
 
     }
 
