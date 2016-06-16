@@ -74,15 +74,17 @@ angular.module('TIYAngularApp', [])
                 languagesToAdd.push(language);
             }
        }
-
-       console.log("About to add the following note " + JSON.stringify($scope.newNote));
-       console.log("About to add the following user to our note" + JSON.stringify($scope.newUser));
-       console.log("About to add the following tags to our note" + JSON.stringify(tagsToAdd));
-       console.log("About to add the following languages to our note" + JSON.stringify(languagesToAdd));
-       alert("just want to see the output ...");
        $scope.newNote.tags = tagsToAdd;
        $scope.newNote.languages = languagesToAdd;
        $scope.newNote.user = $scope.newUser;
+       console.log("About to add the following user to our note: " + JSON.stringify($scope.newUser));
+       console.log("About to add the following tags to our note: " + JSON.stringify(tagsToAdd));
+       console.log("About to add the following languages to our note: " + JSON.stringify(languagesToAdd));
+       console.log("About to add the following title to our note: " + JSON.stringify($scope.newNote.noteTitle));
+       console.log("About to add the following code to our note: " + JSON.stringify($scope.newNote.noteCode));
+       console.log("About to add the following text/comment to our note: " + JSON.stringify($scope.newNote.noteText));
+       alert("just want to see the output ...");
+       console.log("About to add the following note " + JSON.stringify($scope.newNote));
        $http.post("/addNote.json", $scope.newNote)
                 .then(
                 function successCallback(response) {

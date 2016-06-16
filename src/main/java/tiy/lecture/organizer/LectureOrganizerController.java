@@ -93,11 +93,12 @@ public class LectureOrganizerController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(Model model, HttpSession session, String userEmail, String userPassword) {
-
-        User user = users.findByEmail(userEmail);
-
-        if (user == null || !userPassword.equals(user.getPassword())) {
+    public String login(Model model, HttpSession session, String email, String password) {
+        User user = users.findByEmail(email);
+        System.out.println("<============================>");
+        System.out.println("User email: " + user.email.toString());
+        System.out.println("User password: " + user.password.toString());
+        if (user == null || !password.equals(user.getPassword())) {
             String errorMessage = "Login error - please check your credentials and try again";
             session.setAttribute("error", errorMessage);
             return "redirect:/";
@@ -135,8 +136,13 @@ public class LectureOrganizerController {
 
     @RequestMapping(path = "/adduser", method = RequestMethod.POST)
     public String addUser(Model model, HttpSession session, String fName, String lName, String userEmail, String DBA, String school, String userPassword) {
-
         User user = new User(userEmail, userPassword, DBA, school, fName, lName);
+        System.out.println("<===============================================================>");
+        System.out.println("New users first name: " + user.firstName.toString());
+        System.out.println("New users last name: " + user.lastName.toString());
+        System.out.println("New user email: " + user.email);
+        System.out.println("New user school/cohort: " + user.cohort.toString());
+        System.out.println("<===============================================================>");
         users.save(user);
         session.setAttribute("user", user);
         model.addAttribute(user);
