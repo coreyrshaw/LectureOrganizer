@@ -21,6 +21,9 @@
       height: 50px;
 
       }
+      .notePreviewTitle{
+
+      }
 
       #langauges{
       float:left;
@@ -41,7 +44,10 @@
       padding: 0px; !important
 
       }
+      .notePreviewTitle{
 
+
+      }
       #note-list{
       width: 85%;
       height: 85%;
@@ -76,6 +82,15 @@
       margin-right: 10px;
       margin-left: 10px;
       }
+
+      #previewNote{
+      float: right;
+      height: 50px;
+      margin-top: 13px;
+      margin-right: 10px;
+      margin-left: 10px;
+      }
+
       #noteheader{
       text-align: center;
       }
@@ -87,6 +102,10 @@
       .footer{
        padding-top: 70px;
       }
+      .notePreviewCode{
+      width:100%;
+
+      }
 
       #openAddNote{
        float: right;
@@ -97,13 +116,20 @@
       }
 
       .addNoteModal{
+        padding-top: 50px !important;
         padding-bottom: 50px !important;
 
       }
+      .notePreviewCollapse{
 
+      }
       .note-form{
-      height: 800px !important;
+        height: 900px !important;
 
+      }
+
+      .note-preview{
+       height: 700px !important;
       }
 
       #pick-topic{
@@ -180,10 +206,18 @@
                             <a data-toggle="collapse" href="#collapse1">Note Title/Date/Tags</a>
                         </h4>
                     </div>
+
                     <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-body"><code>
+
+                        <div class="panel-body">
+                            <code>
                             System.out.println("This Is Code");
-                        </code></div><div class="panel-footer">Panel Footer</div>
+                            </code>
+                        </div>
+
+                        <div class="panel-footer">Panel Footer
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -230,6 +264,10 @@
                         </ul>
                     </div>
 
+                    <div class="space">
+
+                    </div>
+
                     <div>
                         Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}"> {{tag.name}} * </span>
                     </div>
@@ -247,8 +285,16 @@
                         </ul>
                     </div>
 
+                    <div class="space">
+
+                    </div>
+
                     <div>
                         Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
+                    </div>
+
+                    <div class="space">
+
                     </div>
 
 
@@ -267,18 +313,102 @@
 
                 </form>
 
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#notePreviewCollapse">Note Preview</a>
+                            </h4>
+                        </div>
+
+                        <div class="panel-collapse collapse" id="notePreviewCollapse">
+                            <div class="panel-body">
+                            <ul class="list-group">
+
+                                <h4>Notes Title:</h4>
+                                <li class="list-group-item">
+                                    <div class="container notePreviewTitle">
+
+                                            {{newNote.noteTitle}}
+                                    </div>
+                                </li>
+
+                                <h4>Notes Code:</h4>
+                                <li class="list-group-item">
+                                    <div class="container notePreviewCode">
+                                        <code>{{newNote.noteCode}}
+
+                                        </code>
+                                    </div>
+                                </li>
+
+                                <h4>Notes Tags:</h4>
+                                <li class="list-group-item">
+                                    <div class="container notePreviewTags">
+                                        <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
+                                    </div>
+                                </li>
+
+                                <h4>Notes Languages:</h4>
+                                <li class="list-group-item">
+                                    <div class="container notePreviewLanguages">
+                                            {{newNote.noteLanguages}}
+                                    </div>
+                                </li>
+
+                                <h4>Notes Text/Comments:</h4>
+                                <li class="list-group-item">
+                                    <div class="container notePreviewText">
+                                            {{newNote.noteText}}
+                                    </div>
+                                </li>
+                            </ul>
+                            </div>
+                            <div class="panel-footer">Panel Footer</div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                <button ng-click="addNote()" class="btn btn-success" id="addNote"
-                        value="Create Notes">Add Note</button>
+                <!--<button ng-click="previewNote()" class="btn btn-success" id="previewNote" data-toggle="modal" data-target="#previewNoteModal">Preview Note</button>-->
+                <button ng-click="addNote()" class="btn btn-success" id="addNote" value="Create Notes">Add Note</button>
             </div>
 
         </div>
         </div>
 
     </div>
-</div>
+
+<!--<div id="previewNoteModal" class="modal fade" role="dialog">-->
+    <!--<div class="modal-dialog previewNoteModal">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <!--<h4 class="modal-title">Note preview</h4>-->
+                <!--<div class="modal-body note-preview">-->
+
+                    <div class="container notePreviewTitle">
+
+                    </div>
+
+                    <div class="container notePreviewCode">
+
+                    </div>
+
+                    <div class="container notePreviewCode">
+
+                    </div>
+
+                    <div class="container notePreviewText">
+
+                    </div>
+
+                <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 

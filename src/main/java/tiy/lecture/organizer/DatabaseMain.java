@@ -4,9 +4,6 @@ import org.h2.tools.Server;
 
 import java.sql.*;
 
-/**
- * Created by Sulton on 6/9/2016.
- */
 public class DatabaseMain {
     public static void databaseMain(String[] args) throws SQLException {
         Server.createWebServer().start();

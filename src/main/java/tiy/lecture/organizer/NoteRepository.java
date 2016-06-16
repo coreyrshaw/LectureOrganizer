@@ -6,9 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by Justins PC on 5/22/2016.
- */
 public interface NoteRepository extends CrudRepository<Note,Integer> {
 
     @Query("SELECT g FROM Note g WHERE g.noteTitle LIKE ?1%")

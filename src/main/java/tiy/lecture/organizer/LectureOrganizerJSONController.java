@@ -11,10 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-/**
- * Created by kat on 6/10/2016.
- */
-
 @RestController
 public class LectureOrganizerJSONController {
     @Autowired
@@ -71,11 +67,20 @@ public class LectureOrganizerJSONController {
     @RequestMapping(path = "/addNote.json", method = RequestMethod.POST)
     public ArrayList<Note> addNote(HttpSession session, @RequestBody Note note) throws Exception {
         User user = (User)session.getAttribute("user");
-        note.setUser(user);
+        System.out.println("User from session::" + user);
+//        note.setUser(user);
         System.out.println("<=============================================================>");
         System.out.println("Title of the note that we are trying to add: " + note.noteTitle);
         System.out.println("The code of the note that we are trying to add: " + note.noteCode);
         System.out.println("This is the text of the code that we are trying to add: " + note.noteText);
+        System.out.println("This is the text of the code that we are trying to add: " + note.getLanguages());
+        for (Language language : note.getLanguages())  {
+            System.out.println("\tLanguage::" + language.getId());
+        }
+        System.out.println("This is the text of the code that we are trying to add: " + note.getTags());
+        for (Tag tag : note.getTags()) {
+            System.out.println("\tTag::" + tag.getId());
+        }
         System.out.println("<=============================================================>");
         notes.save(note);
         return getAllNotes();
