@@ -113,16 +113,6 @@ public class LectureOrganizerJSONController {
         return languageList;
     }
 
-//    @RequestMapping(path = "/datedNotes.json", method = RequestMethod.GET)
-//    public ArrayList<Note> getDatedNotes(LocalDateTime created_at) throws Exception {
-//        ArrayList<Note> datedNoteList = new ArrayList<Note>();
-//        Iterable<Note> allDatedNotes = notes.findByDate(created_at);
-//        for (Note datedNote : allDatedNotes) {
-//            datedNoteList.add(datedNote);
-//        }
-//        return datedNoteList;
-//    }
-
 
 
 
