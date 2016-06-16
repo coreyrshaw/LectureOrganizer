@@ -197,7 +197,7 @@ public class LectureOrganizerApplicationTests {
 	}
 
 	@Test
-	public void testAddLanguageAndNote() throws Exception {
+	public void testAddNoteUserNote() throws Exception {
 		String noteSubject = "primitivetype";
 		String noteName = "Learning about doubles";
 		String noteCode = "System.out";
@@ -236,12 +236,22 @@ public class LectureOrganizerApplicationTests {
 		assertEquals(note.id, noteFound.id);
 		notes.save(note);
 
+		Note noteFound2 = notes.findOne(note2.id);
+		System.out.println("==============" + note2.id + " " + noteFound2.id);
+		assertEquals(note2.id, noteFound2.id);
+		notes.save(note2);
+
+//		assertEquals(note.id, user.id);
+
+
+
 
 		notes.delete(note);
 		users.delete(user);
 
 		notes.delete(note2);
 		users.delete(user2);
+		notes.delete(note2);
 	}
 
 }
