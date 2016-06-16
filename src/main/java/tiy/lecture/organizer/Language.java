@@ -3,25 +3,21 @@ package tiy.lecture.organizer;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Sulton on 6/13/2016.
- */
-
 @Entity
 @Table(name="languages")
 public class Language {
 
 
-        @ManyToMany(mappedBy = "languages")
-        private Set<Note> notes;
+//        @ManyToMany(mappedBy = "languages")
+//        private Set<Note> notes;
+//
+//    public Set<Note> getNotes() {
+//        return notes;
+//    }
 
-    public Set<Note> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(Set<Note> notes) {
-        this.notes = notes;
-    }
+//    public void setNotes(Set<Note> notes) {
+//        this.notes = notes;
+//    }
 
     public int getId() {
         return id;
