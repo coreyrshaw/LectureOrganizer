@@ -124,7 +124,9 @@ public class LectureOrganizerController {
     @RequestMapping(path = "/notes", method = RequestMethod.GET)
     public String userLogin(Model model, HttpSession session,User user) {
         user = (User) session.getAttribute("user");
-        model.addAttribute(user);
+        if (user != null) {
+            model.addAttribute(user);
+        }
         return "notes";
     }
 

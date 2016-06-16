@@ -59,9 +59,13 @@ public class Note {
     String noteCode;
 
 
+    public String getNoteTitle() {
+        return noteTitle;
+    }
 
-
-
+    public void setNoteTitle(String noteTitle) {
+        this.noteTitle = noteTitle;
+    }
 
     public User getUser() {
         return user;

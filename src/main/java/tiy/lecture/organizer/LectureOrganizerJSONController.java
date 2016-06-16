@@ -70,13 +70,12 @@ public class LectureOrganizerJSONController {
 
     @RequestMapping(path = "/addNote.json", method = RequestMethod.POST)
     public ArrayList<Note> addNote(HttpSession session, @RequestBody Note note) throws Exception {
-        String noteTitle = note.noteTitle.toString();
-        String noteCode = note.noteCode.toString();
-        String noteText = note.noteText.toString();
+        User user = (User)session.getAttribute("user");
+        note.setUser(user);
         System.out.println("<=============================================================>");
-        System.out.println("Title of the note that we are trying to add: " + noteTitle);
-        System.out.println("The code of the note that we are trying to add: " + noteCode);
-        System.out.println("This is the text of the code that we are trying to add: " + noteText);
+        System.out.println("Title of the note that we are trying to add: " + note.noteTitle);
+        System.out.println("The code of the note that we are trying to add: " + note.noteCode);
+        System.out.println("This is the text of the code that we are trying to add: " + note.noteText);
         System.out.println("<=============================================================>");
         notes.save(note);
         return getAllNotes();
