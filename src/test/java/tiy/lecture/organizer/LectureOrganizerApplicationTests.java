@@ -125,29 +125,34 @@ public class LectureOrganizerApplicationTests {
 	}
 
 	@Test
-	public void testAddLanguageAndNote() throws Exception {
+	public void testAddUserAndNote() throws Exception {
 		String noteLang = "Python";
 		String noteTitle = "UserInput";
 		String noteText = "hi";
-
 		String noteCode = "System.out";
+
 		String email = "elhadi.sulton@gmail.com";
 		String password = "sultone";
-		String dateOfBirth = "12/02/1995";
 		String cohort = "Iron Yard";
 		String firstName = "Sulton";
 		String lastName = "Elhadi";
+
 		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
+
 		Language language = new Language(noteLang);
 		languages.save(language);
+
 		Note note = new Note(noteCode, noteTitle, noteText, user);
+
 		Language languagesFound = languages.findOne(language.id);
 		System.out.println("==============" + language.id + " " + languagesFound.id);
 		assertEquals(language.id, languagesFound.id);
 //		Language noteLanguage = note.;
 		note.addLanguage(language);
 		notes.save(note);
+
+
 		notes.delete(note);
 		languages.delete(language);
 		users.delete(user);
@@ -190,4 +195,63 @@ public class LectureOrganizerApplicationTests {
 		tags.delete(thirdTag);
 
 	}
+
+	@Test
+	public void testAddNoteUserNote() throws Exception {
+		String noteSubject = "primitivetype";
+		String noteName = "Learning about doubles";
+		String noteCode = "System.out";
+
+		String email = "elhadi.sulton@gmail.com";
+		String password = "sultone";
+		String cohort = "Iron Yard";
+		String firstName = "Sulton";
+		String lastName = "Elhadi";
+
+		String noteSubject2 = "UserInput";
+		String noteName2 = "Learning about input";
+		String noteCode2 = "user";
+
+		String email2 = "josh@gmail.com";
+		String password2 = "joshe";
+		String cohort2 = "Iron Yard";
+		String firstName2 = "Josh";
+		String lastName2 = "Hon";
+
+		User user = new User(email, password, cohort, firstName, lastName);
+		users.save(user);
+
+		Note note = new Note(noteSubject,  noteCode,  noteName, user);
+		notes.save(note);
+
+		User user2 = new User(email2, password2, cohort2, firstName2, lastName2);
+		users.save(user2);
+
+		Note note2 = new Note(noteSubject2,  noteCode2,  noteName2, user2);
+		notes.save(note2);
+
+
+		Note noteFound = notes.findOne(note.id);
+		System.out.println("==============" + note.id + " " + noteFound.id);
+		assertEquals(note.id, noteFound.id);
+		notes.save(note);
+
+		Note noteFound2 = notes.findOne(note2.id);
+		System.out.println("==============" + note2.id + " " + noteFound2.id);
+		assertEquals(note2.id, noteFound2.id);
+		notes.save(note2);
+
+//		assertEquals(note.id, user.id);
+
+
+
+
+		notes.delete(note);
+		users.delete(user);
+
+		notes.delete(note2);
+		users.delete(user2);
+		notes.delete(note2);
+	}
+
 }
