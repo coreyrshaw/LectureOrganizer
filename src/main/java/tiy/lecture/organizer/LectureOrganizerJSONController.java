@@ -1,14 +1,12 @@
 package tiy.lecture.organizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @RestController
@@ -68,7 +66,11 @@ public class LectureOrganizerJSONController {
     public ArrayList<Note> addNote(HttpSession session, @RequestBody Note note) throws Exception {
         User user = (User)session.getAttribute("user");
         System.out.println("User from session::" + user);
-//        note.setUser(user);
+//        System.out.println("User notes = " + user.getNotes());
+        // Note: we need to clear the notes from the user before saving the user on the
+        // note, because of a potential circular reference issue - TODO: figure out another way to do this
+        user.setNotes(null);
+        note.user = user;
         System.out.println("<=============================================================>");
         System.out.println("Title of the note that we are trying to add: " + note.noteTitle);
         System.out.println("The code of the note that we are trying to add: " + note.noteCode);
