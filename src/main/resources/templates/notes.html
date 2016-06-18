@@ -49,6 +49,7 @@
 
       }
       #note-list{
+      overflow-y: scroll;
       width: 85%;
       height: 85%;
       border-bottom:solid grey 2px;
@@ -115,6 +116,21 @@
        margin-left: 10px;
       }
 
+      #getNotes{
+       float: right;
+       height: 50px;
+       margin-top: 13px;
+       margin-right: 10px;
+       margin-left: 10px;
+      }
+      #editAddNote{
+       float: right;
+       height: 50px;
+       margin-top: 13px;
+       margin-right: 10px;
+       margin-left: 10px;
+      }
+
       .addNoteModal{
         padding-top: 50px !important;
         padding-bottom: 50px !important;
@@ -151,9 +167,32 @@
       width: 100% !important;
       padding: 0px !important;
       }
+      .notes-table-body{
+      height: 100px !important;
+      width: 100px !important;
+      }
+      .table-holder{
+      background-color:red;
+      width: 100%;
+      height: 100%;
+      }
 
 
-
+      .table-fixed thead {
+       width: 70%;
+      }
+      .table-fixed tbody {
+       height: 100%;
+       overflow-y: auto;
+       width: 100%;
+      }
+      .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+      display: block;
+      }
+      .table-fixed tbody td, .table-fixed thead > tr> th {
+       float: left;
+       border-bottom-width: 0;
+      }
 
   </style>
     </head>
@@ -197,38 +236,79 @@
     </div>
 
     <div class="container" id="note-list">
+     <span ng-repeat="note in notes">
+         <div class="panel-group">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <h4 class="panel-title">
+                         <a data-toggle="collapse"style="text-align:center !important;" href="#{{note.id}}">{{note.noteTitle}}</a>
+                     </h4>
+                 </div>
 
-        <div class="note">
-            <div class="panel-group">
-                <div class="panel panel-default note">
-                    <div class="panel-heading note-heading">
-                        <h4 class="panel-title" id="noteheader">
-                            <a data-toggle="collapse" href="#collapse1">Note Title/Date/Tags</a>
-                        </h4>
-                    </div>
+                 <div class="panel-collapse collapse" id="{{note.id}}">
+                     <div class="panel-body">
+                         <ul class="list-group">
 
-                    <div id="collapse1" class="panel-collapse collapse">
+                             <h4>Notes Title:</h4>
+                             <li class="list-group-item">
+                                 <div class="container notePreviewTitle">
 
-                        <div class="panel-body">
-                            <code>
-                            System.out.println("This Is Code");
-                            </code>
-                        </div>
+                                     {{note.noteTitle}}
+                                 </div>
+                             </li>
 
-                        <div class="panel-footer">Panel Footer
+                             <h4>Notes Code:</h4>
+                             <li class="list-group-item">
+                                 <div class="container notePreviewCode">
+                                     <code>{{note.noteCode}}
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                     </code>
+                                 </div>
+                             </li>
 
-        </div>
+                             <h4>Notes Tags:</h4>
+                             <li class="list-group-item">
+                                 <div class="container notePreviewTags">
+                                            {{note.tags}},
+                                 </div>
+                             </li>
 
+                             <h4>Notes Languages:</h4>
+                             <li class="list-group-item">
+                                 <div class="container notePreviewLanguages">
+                                     {{note.language}},
+
+                                 </div>
+                             </li>
+
+                             <h4>Notes Text/Comments:</h4>
+                             <li class="list-group-item">
+                                 <div class="container notePreviewText">
+                                     {{note.noteText}}
+                                 </div>
+                             </li>
+                         </ul>
+                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editNoteModal" id="editAddNote">Edit Note</button>
+                     </div>
+                     <div class="panel-footer">
+
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+
+     </span>
     </div>
 
     <div class="container" id="button-holder">
+        <button type="button" class="btn btn-success btn-lg" ng-click="getNotes()" id="getNote">Get Notes</button>
         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addNoteModal" id="openAddNote">Add Note</button>
     </div>
+
+    </div>
+
+
 </div>
 <div id="addNoteModal" class="modal fade" role="dialog">
     <div class="modal-dialog addNoteModal">
@@ -345,14 +425,18 @@
                                 <h4>Notes Tags:</h4>
                                 <li class="list-group-item">
                                     <div class="container notePreviewTags">
-                                        <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
+                                        <span ng-repeat="tag in tags | filter:{isSelected: true}">
+                                            {{tag.name}},
+                                        </span>
                                     </div>
                                 </li>
 
                                 <h4>Notes Languages:</h4>
                                 <li class="list-group-item">
                                     <div class="container notePreviewLanguages">
-                                            {{newNote.noteLanguages}}
+                                        <span ng-repeat="language in languages | filter:{isSelected: true}">
+                                            {{language.language}},
+                                        </span>
                                     </div>
                                 </li>
 
