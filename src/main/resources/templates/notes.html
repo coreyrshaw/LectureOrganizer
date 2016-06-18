@@ -116,6 +116,12 @@
        margin-left: 10px;
       }
 
+      #delete-note-body{
+      height: 200px !important;
+      width: 250px !important;
+      margin: auto !important;
+      }
+
       #getNotes{
        float: right;
        height: 50px;
@@ -123,12 +129,38 @@
        margin-right: 10px;
        margin-left: 10px;
       }
-      #editAddNote{
+
+      #editNote{
        float: right;
        height: 50px;
        margin-top: 13px;
        margin-right: 10px;
        margin-left: 10px;
+      }
+
+      #deleteNote{
+       float: left;
+       height: 50px;
+       margin-top: 13px;
+       margin-right: 10px;
+       margin-left: 10px;
+      }
+
+      #delete-note{
+       float: left;
+       height: 50px;
+       margin-top: 13px;
+       margin-right: 10px;
+       margin-left: 10px;
+      }
+
+      #no-delete-note{
+       float: right;
+       height: 50px;
+       margin-top: 13px;
+       margin-right: 10px;
+       margin-left: 10px;
+       padding-right: 15x;
       }
 
       .addNoteModal{
@@ -146,6 +178,11 @@
 
       .note-preview{
        height: 700px !important;
+      }
+
+      #deleteNoteModal{
+       padding-top: 100px !important;
+       padding-bottom: 100px !important;
       }
 
       #pick-topic{
@@ -241,7 +278,7 @@
              <div class="panel panel-default">
                  <div class="panel-heading">
                      <h4 class="panel-title">
-                         <a data-toggle="collapse"style="text-align:center !important;" href="#{{note.id}}">{{note.noteTitle}}</a>
+                         <a data-toggle="collapse"style="text-align: center !important;" href="#{{note.id}}">{{note.noteTitle}}</a>
                      </h4>
                  </div>
 
@@ -288,7 +325,8 @@
                                  </div>
                              </li>
                          </ul>
-                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editNoteModal" id="editAddNote">Edit Note</button>
+                         <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
+                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editNoteModal" id="editNote">Edit Note</button>
                      </div>
                      <div class="panel-footer">
 
@@ -465,37 +503,20 @@
 
     </div>
 
-<!--<div id="previewNoteModal" class="modal fade" role="dialog">-->
-    <!--<div class="modal-dialog previewNoteModal">-->
-        <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                <!--<h4 class="modal-title">Note preview</h4>-->
-                <!--<div class="modal-body note-preview">-->
 
-                    <div class="container notePreviewTitle">
-
-                    </div>
-
-                    <div class="container notePreviewCode">
-
-                    </div>
-
-                    <div class="container notePreviewCode">
-
-                    </div>
-
-                    <div class="container notePreviewText">
-
-                    </div>
-
-                <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-
+<div id="deleteNoteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" id="delete-note-body">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+                <h4 class="modal-title" style="text-align: center;">Are You Sure You Want To Delete This Note?</h4>
+                <div class="modal-body delete-note">
+                    <button type="button" class="btn btn-danger btn-lg" id="delete-note">Yes</button>
+                    <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" id="no-delete-note">No</button>
+                </div>
+        </div>
+    </div>
 <div class="footer">
 
 </div>
