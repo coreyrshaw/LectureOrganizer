@@ -4,6 +4,7 @@
     <script src="/js/tiy-ng-controller.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/f205e83315.js"></script>
     <style>
     .note-box{
       border-style: solid;
@@ -359,7 +360,7 @@
                 <form>
                     <div class="form-group">
                     <label for="title"> Title:
-                        </label>
+                      </label>
                     <input type="text" class="form-control" id="title" ng-model="newNote.noteTitle">
                     </div>
 
@@ -377,7 +378,7 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
                             <li ng-repeat="tag in tags" ng-model="newNote.noteTag" role="presentation" ng-click="toggleTopic(tag)">
-                                <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected">-</span></a>
+                                <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected"> <i class="fa fa-check-square" aria-hidden="true"></i></span></a>
                             </li>
                         </ul>
                     </div>
@@ -387,7 +388,7 @@
                     </div>
 
                     <div>
-                        Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}"> {{tag.name}} * </span>
+                        Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}" ng-click="toggleTopic(tag)" > {{tag.name}}&nbsp; <i class="fa fa-check-square"aria-hidden="true"></i></span>
                     </div>
 
                     <div class="space">
@@ -398,7 +399,7 @@
                             <span class="caret"></span></button>
                         <ul id="pick-lang-list" class="dropdown-menu" role="menu" aria-labelledby="langauges">
                             <li  ng-repeat="language in languages"  ng-model="newNote.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected">-</span></a>
+                                <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected"> &nbsp; <i class="fa fa-check-square"aria-hidden="true"></i> </span></a>
                             </li>
                         </ul>
                     </div>
@@ -408,7 +409,7 @@
                     </div>
 
                     <div>
-                        Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}"> {{noteLanguage.language}} * </span>
+                        Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}" ng-click="toggleLanguage(language)"  > {{language.language}}&nbsp;<i class="fa fa-check-square"aria-hidden="true"></i> </span>
                     </div>
 
                     <div class="space">
