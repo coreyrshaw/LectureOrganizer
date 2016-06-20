@@ -523,7 +523,7 @@
             </div>
             <div class="modal-footer">
                 <!--<button ng-click="previewNote()" class="btn btn-success" id="previewNote" data-toggle="modal" data-target="#previewNoteModal">Preview Note</button>-->
-                <button ng-click="addNote()" class="btn btn-success" id="addNote" value="Create Notes">Add Note</button>
+                <button ng-click="addNote()" class="btn btn-success" data-dismiss="modal" id="addNote" value="Create Notes">Add Note</button>
             </div>
 
         </div>
@@ -694,7 +694,7 @@
             </div>
 
             <div class="modal-footer">
-                <button ng-click="editNote(noteToEdit.id)" class="btn btn-success" id="addNote" value="Create Notes">Save Edit</button>
+                <button ng-click="editNote(noteToEdit.id)" class="btn btn-success" data-dismiss="modal" id="addNote" value="Create Notes">Save Edit</button>
             </div>
 
         </div>
