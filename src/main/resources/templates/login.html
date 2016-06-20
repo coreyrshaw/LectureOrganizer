@@ -50,7 +50,11 @@
 <body ng-controller="SampleController">
 
 <div class="headerspace">
-
+    {{#error}}
+    <script>
+        alert("{{error}}");
+    </script>
+    {{/error}}
 </div>
 
 <div class="container">
