@@ -124,6 +124,10 @@ angular.module('TIYAngularApp', [])
 
        }
 
+//       $scope.getNoteTags = function(note.Tags) {
+//       console.log("This note has the following tags: " + note.Tags)
+//       }
+
        $scope.editNote = function(note) {
        console.log("About to edit the following note: " + note);
        console.log("note title: " + note.noteTitle);

@@ -333,15 +333,15 @@
 
                              <h4>Notes Tags:</h4>
                              <li class="list-group-item">
-                                 <div class="container notePreviewTags">
-                                            {{note.tags}},
+                                 <div ng-repeat="tag in note.tags" class="container notePreviewTags">
+                                        {{tag.name}}
                                  </div>
                              </li>
 
                              <h4>Notes Languages:</h4>
                              <li class="list-group-item">
-                                 <div class="container notePreviewLanguages">
-                                     {{note.language}},
+                                 <div ng-repeat="language in note.languages" class="container notePreviewLanguages">
+                                     {{language.language}},
 
                                  </div>
                              </li>
