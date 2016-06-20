@@ -74,7 +74,6 @@ angular.module('TIYAngularApp', [])
        }
        $scope.newNote.tags = tagsToAdd;
        $scope.newNote.languages = languagesToAdd;
-       $scope.newNote.user = $scope.newUser;
        console.log("About to add the following user to our note: " + JSON.stringify($scope.newUser));
        console.log("About to add the following tags to our note: " + JSON.stringify(tagsToAdd));
        console.log("About to add the following languages to our note: " + JSON.stringify(languagesToAdd));

@@ -510,9 +510,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-                <h4 class="modal-title" style="text-align: center;">Are You Sure You Want To Delete This Note?</h4>
+                <h4 class="modal-title" style="text-align: center;">
+                    Are You Sure You Want To Delete This Note?
+                </h4>
                 <div class="modal-body delete-note">
-                    <button type="button" class="btn btn-danger btn-lg" id="delete-note">Yes</button>
+                    <button type="button" class="btn btn-danger btn-lg" ng-click="deleteNote(note)" id="delete-note">Yes</button>
                     <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" id="no-delete-note">No</button>
                 </div>
         </div>
