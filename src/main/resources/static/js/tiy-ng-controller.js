@@ -118,6 +118,23 @@ angular.module('TIYAngularApp', [])
 
        }
 
+       $scope.deleteNoteModal = function(noteID) {
+       console.log("About to delete the following note " + noteID);
+      $scope.noteToDelete = noteID;
+
+
+
+       }
+
+//
+//       $scope.(document).on("click", ".open-deleteNote", function () {
+//            var noteToDelete = $(this).data('note.id');
+//            $(".modal-body #noteId").val(noteToDelete);
+//            // As pointed out in comments,
+//            // it is superfluous to i to manually call the modal.
+//            // $('#addBookDialog').modal('show');
+//       }
+
        $scope.toggleTopic = function(tag) {
         console.log(tag);
         tag.isSelected = !tag.isSelected;

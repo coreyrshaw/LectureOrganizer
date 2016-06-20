@@ -5,6 +5,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/f205e83315.js"></script>
+
+    <script type="text/javascript">
+    $(document).on("click", ".open-deleteNote", function () {
+    var noteToDelete = $(this).data('note.id');
+    console.log("about to delete the following note" + noteToDelete");
+    $("modal-body #noteId").val( noteToDelete );
+
+    });
+    </script>
     <style>
     .note-box{
       border-style: solid;
@@ -326,7 +335,7 @@
                                  </div>
                              </li>
                          </ul>
-                         <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
+                         <button type="button" class="open-deleteNote btn btn-danger btn-lg" data-toggle="modal" ng-click="deleteNoteModal(note.id)"data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
                          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editNoteModal" id="editNote">Edit Note</button>
                      </div>
                      <div class="panel-footer">
@@ -514,8 +523,8 @@
                 <h4 class="modal-title" style="text-align: center;">
                     Are You Sure You Want To Delete This Note?
                 </h4>
-                <div class="modal-body delete-note">
-                    <button type="button" class="btn btn-danger btn-lg" ng-click="deleteNote(note)" id="delete-note">Yes</button>
+                <div class="modal-body delete-note" ng-note="noteToDelete">
+                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" ng-click="deleteNote(noteToDelete)" id="delete-note">Yes</button>
                     <button type="button" class="btn btn-success btn-lg" data-dismiss="modal" id="no-delete-note">No</button>
                 </div>
         </div>
