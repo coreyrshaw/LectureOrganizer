@@ -120,10 +120,16 @@ angular.module('TIYAngularApp', [])
 
        $scope.deleteNoteModal = function(noteID) {
        console.log("About to delete the following note " + noteID);
-      $scope.noteToDelete = noteID;
+       $scope.noteToDelete = noteID;
 
+       }
 
-
+       $scope.editNote = function(note) {
+       console.log("About to edit the following note: " + note);
+       console.log("note title: " + note.noteTitle);
+       console.log("Note id: " + note.id);
+       console.log("Note text: " + note.noteText);
+       $scope.noteToEdit = note;
        }
 
 //

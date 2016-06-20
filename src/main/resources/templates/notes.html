@@ -178,13 +178,31 @@
         padding-bottom: 50px !important;
 
       }
+      .editNoteModal{
+       padding-top: 50px !important;
+       padding-bottom: 50px !important;
+      }
+
+      .deleteNoteModal{
+       padding-top: 50px !important;
+       padding-bottom: 50px !important;
+
+      }
+
       .notePreviewCollapse{
 
       }
+
       .note-form{
-        height: 900px !important;
+       height: 900px !important;
 
       }
+
+      .edit-note-form{
+      height: 900px !important;
+
+      }
+
 
       .note-preview{
        height: 700px !important;
@@ -335,8 +353,8 @@
                                  </div>
                              </li>
                          </ul>
-                         <button type="button" class="open-deleteNote btn btn-danger btn-lg" data-toggle="modal" ng-click="deleteNoteModal(note.id)"data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
-                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editNoteModal" ng-click id="editNote">Edit Note</button>
+                         <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" ng-click="deleteNoteModal(note.id)" data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
+                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="editNote(note)" data-target="#editNoteModal"  id="editNote">Edit Note</button>
                      </div>
                      <div class="panel-footer">
 
@@ -529,6 +547,159 @@
                 </div>
         </div>
     </div>
+</div>
+
+<div id="editNoteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog editNoteModal">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="text-align:center;">Edit Note</h4>
+            </div>
+            <div class="modal-body note-form">
+                <form>
+                    <div class="form-group">
+                        <label for="title"> Title:
+                        </label>
+                        <input type="text" class="form-control" id="edit-title" ng-model="noteToEdit.noteTitle" value="noteToEdit.noteTitle">
+                    </div>
+
+                    <div class="space">
+                    </div>
+
+                    <div class="dropdown" id="topic-picker">
+                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="pick-topic" data-toggle="dropdown">Topics
+                            <span class="caret">
+
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
+                            <li ng-repeat="tag in tags" ng-model="newNote.noteTag" role="presentation" ng-click="toggleTopic(tag)">
+                                <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected"> <i class="fa fa-check-square" aria-hidden="true"></i></span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space">
+
+                    </div>
+
+                    <div>
+                        Selected Topics: <span ng-repeat="tag in tags | filter:{isSelected: true}" ng-click="toggleTopic(tag)" > {{tag.name}}&nbsp; <i class="fa fa-check-square"aria-hidden="true"></i></span>
+                    </div>
+
+                    <div class="space">
+                    </div>
+
+                    <div class="dropdown" id="language-picker">
+                        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="pick-language" data-toggle="dropdown"><L>Language</L>
+                            <span class="caret"></span></button>
+                        <ul id="pick-lang-list" class="dropdown-menu" role="menu" aria-labelledby="langauges">
+                            <li  ng-repeat="language in languages"  ng-model="newNote.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected"> &nbsp; <i class="fa fa-check-square"aria-hidden="true"></i> </span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space">
+
+                    </div>
+
+                    <div>
+                        Selected Languages: <span ng-repeat="language in languages | filter:{isSelected: true}" ng-click="toggleLanguage(language)"  > {{language.language}}&nbsp;<i class="fa fa-check-square"aria-hidden="true"></i> </span>
+                    </div>
+
+                    <div class="space">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code"> Code:
+                        </label>
+                        <textarea rows="8" class="form-control" id="edit-code" ng-model="noteToEdit.noteCode" value="noteToEdit.noteCode"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text"> Text/Comments:
+                        </label>
+                        <textarea rows="8" class="form-control" id="edit-text" ng-model="noteToEdit.noteText" value="noteToEdit.noteText"></textarea>
+                    </div>
+
+                </form>
+
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#editNotePreviewCollapse">Note Preview</a>
+                            </h4>
+                        </div>
+
+                        <div class="panel-collapse collapse" id="editNotePreviewCollapse">
+                            <div class="panel-body">
+                                <ul class="list-group">
+
+                                    <h4>Notes Title:</h4>
+                                    <li class="list-group-item">
+                                        <div class="container notePreviewTitle">
+                                            {{noteToEdit.noteTitle}}
+                                        </div>
+                                    </li>
+
+                                    <h4>Notes Code:</h4>
+                                    <li class="list-group-item">
+                                        <div rows="8" class="container notePreviewCode">
+                                            <code>
+                                                {{noteToEdit.noteCode}}
+                                            </code>
+                                        </div>
+                                    </li>
+
+                                    <h4>Notes Tags:</h4>
+                                    <li class="list-group-item">
+                                        <div class="container notePreviewTags">
+                                        <span ng-repeat="tag in tags | filter:{isSelected: true}">
+                                            {{tag.name}},
+                                        </span>
+                                        </div>
+                                    </li>
+
+                                    <h4>Notes Languages:</h4>
+                                    <li class="list-group-item">
+                                        <div class="container notePreviewLanguages">
+                                        <span ng-repeat="language in languages | filter:{isSelected: true}">
+                                            {{language.language}},
+                                        </span>
+                                        </div>
+                                    </li>
+
+                                    <h4>Notes Text/Comments:</h4>
+                                    <li class="list-group-item">
+                                        <div rows="8" class="container notePreviewText">
+                                            {{noteToEdit.noteText}}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer">Panel Footer
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button ng-click="saveEditNote()" class="btn btn-success" id="EditNote" value="Create Notes">Save Edit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="footer">
 
 </div>
