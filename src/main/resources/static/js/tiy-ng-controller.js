@@ -100,6 +100,53 @@ angular.module('TIYAngularApp', [])
 
        }
 
+       $scope.editNote = function(noteID) {
+       var tagsToAdd = [];
+       var languagesToAdd = [];
+
+       for(count = 0; count<$scope.tags.length; count++){
+            if($scope.tags[count].isSelected == true) {
+                console.log(count);
+                var tag = $scope.tags[count];
+                tagsToAdd.push(tag)
+            }
+       }
+
+       for(count=0; count<$scope.languages.length; count++){
+            if($scope.languages[count].isSelected == true) {
+                console.log(count);
+                var language = $scope.languages[count];
+                languagesToAdd.push(language);
+            }
+       }
+       $scope.noteToEdit.tags = tagsToAdd;
+       $scope.noteToEdit.languages = languagesToAdd;
+       console.log("Note to edits id: " + $scope.noteToEdit.id)
+       console.log("About to add the following tags to our note: " + JSON.stringify(tagsToAdd));
+       console.log("About to add the following languages to our note: " + JSON.stringify(languagesToAdd));
+       console.log("About to add the following title to our note: " + JSON.stringify($scope.noteToEdit.noteTitle));
+       console.log("About to add the following code to our note: " + JSON.stringify($scope.noteToEdit.noteCode));
+       console.log("About to add the following text/comment to our note: " + JSON.stringify($scope.noteToEdit.noteText));
+       alert("just want to see the output ...");
+       console.log("About to add the following note " + JSON.stringify($scope.newNote));
+       $http.post("/editNote.json", $scope.noteToEdit)
+                .then(
+                function successCallback(response) {
+                    alert("Got the response!");
+                    console.log(response.data);
+                    console.log("adding data to scope");
+                    alert("setting notes to new notes");
+                    $scope.notes = response.data;
+                    alert("notes added!");
+                },
+
+                function errorCallback(response) {
+                    alert("got an error!");
+                    console.log("unable to get data")
+                });
+
+       }
+
 
        $scope.deleteNote = function (noteID) {
        console.log("About to delete the following note " + noteID);
@@ -121,20 +168,24 @@ angular.module('TIYAngularApp', [])
        $scope.deleteNoteModal = function(noteID) {
        console.log("About to delete the following note " + noteID);
        $scope.noteToDelete = noteID;
+       }
 
+       $scope.editNoteModal = function(note) {
+       console.log("About to edit the following note: " + note);
+       $scope.noteToEdit = note;
        }
 
 //       $scope.getNoteTags = function(note.Tags) {
 //       console.log("This note has the following tags: " + note.Tags)
 //       }
 
-       $scope.editNote = function(note) {
-       console.log("About to edit the following note: " + note);
-       console.log("note title: " + note.noteTitle);
-       console.log("Note id: " + note.id);
-       console.log("Note text: " + note.noteText);
-       $scope.noteToEdit = note;
-       }
+//       $scope.editNote = function(note) {
+//       console.log("About to edit the following note: " + note);
+//       console.log("note title: " + note.noteTitle);
+//       console.log("Note id: " + note.id);
+//       console.log("Note text: " + note.noteText);
+//       $scope.noteToEdit = note;
+//       }
 
 //
 //       $scope.(document).on("click", ".open-deleteNote", function () {
@@ -161,5 +212,6 @@ angular.module('TIYAngularApp', [])
         console.log("SampleController ...");
         $scope.name = "James";
         $scope.newNote = {};
+
     });
 

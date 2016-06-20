@@ -88,6 +88,38 @@ public class LectureOrganizerJSONController {
         return getAllNotes();
     }
 
+    @RequestMapping(path = "/editNote.json", method = RequestMethod.POST)
+    public ArrayList<Note> editNote(HttpSession session, @RequestBody Note note) throws Exception {
+        User user = (User)session.getAttribute("user");
+        Note noteToEdit = notes.findOne(note.id);
+        noteToEdit.noteText = note.noteText;
+        noteToEdit.noteTitle = note.noteTitle;
+        noteToEdit.noteCode = note.noteCode;
+        noteToEdit.setLanguages(note.getLanguages());
+        noteToEdit.setTags(note.getTags());
+        System.out.println("User from session::" + user);
+//        System.out.println("User notes = " + user.getNotes());
+        // Note: we need to clear the notes from the user before saving the user on the
+        // note, because of a potential circular reference issue - TODO: figure out another way to do this
+        user.setNotes(null);
+        note.user = user;
+        System.out.println("<=============================================================>");
+        System.out.println("Title of the note that we are trying to add: " + note.noteTitle);
+        System.out.println("The code of the note that we are trying to add: " + note.noteCode);
+        System.out.println("This is the text of the code that we are trying to add: " + note.noteText);
+        System.out.println("This is the text of the code that we are trying to add: " + note.getLanguages());
+        for (Language language : note.getLanguages())  {
+            System.out.println("\tLanguage::" + language.getId());
+        }
+        System.out.println("This is the text of the code that we are trying to add: " + note.getTags());
+        for (Tag tag : note.getTags()) {
+            System.out.println("\tTag::" + tag.getId());
+        }
+        System.out.println("<=============================================================>");
+        notes.save(note);
+        return getAllNotes();
+    }
+
     @RequestMapping(path = "/tags.json", method = RequestMethod.GET)
     public ArrayList<Tag> getAllTags() {
         ArrayList<Tag> tagList = new ArrayList<Tag>();

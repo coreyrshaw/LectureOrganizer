@@ -11,6 +11,9 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
     @Query("SELECT g FROM Note g WHERE g.noteTitle LIKE ?1%")
     List<Note> findByTitle(String noteTitle);
 
+    @Query("SELECT g FROM Note g WHERE g.id LIKE ?1")
+    List<Note> findById(Integer noteId);
+
     @Query("SELECT g FROM Language g WHERE g.language LIKE ?1%")
     List<Note> findByLanguage(Language language);
 

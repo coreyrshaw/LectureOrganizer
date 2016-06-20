@@ -354,7 +354,7 @@
                              </li>
                          </ul>
                          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" ng-click="deleteNoteModal(note.id)" data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
-                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="editNote(note)" data-target="#editNoteModal"  id="editNote">Edit Note</button>
+                         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="editNoteModal(note)" data-target="#editNoteModal"  id="editNote">Edit Note</button>
                      </div>
                      <div class="panel-footer">
 
@@ -562,20 +562,20 @@
                     <div class="form-group">
                         <label for="title"> Title:
                         </label>
-                        <input type="text" class="form-control" id="edit-title" ng-model="noteToEdit.noteTitle" value="noteToEdit.noteTitle">
+                        <input type="text" class="form-control" id="title" ng-model="noteToEdit.noteTitle" value="noteToEdit.noteTitle">
                     </div>
 
                     <div class="space">
                     </div>
 
                     <div class="dropdown" id="topic-picker">
-                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="pick-topic" data-toggle="dropdown">Topics
+                        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topic" data-toggle="dropdown">Topics
                             <span class="caret">
 
                             </span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-                            <li ng-repeat="tag in tags" ng-model="newNote.noteTag" role="presentation" ng-click="toggleTopic(tag)">
+                            <li ng-repeat="tag in tags" ng-model="noteToEdit.noteTag" role="presentation" ng-click="toggleTopic(tag)">
                                 <a role="menuitem" tabindex="-1" href="#">{{tag.name}} <span ng-if="tag.isSelected"> <i class="fa fa-check-square" aria-hidden="true"></i></span></a>
                             </li>
                         </ul>
@@ -593,10 +593,10 @@
                     </div>
 
                     <div class="dropdown" id="language-picker">
-                        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="pick-language" data-toggle="dropdown"><L>Language</L>
+                        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="language" data-toggle="dropdown"><L>Language</L>
                             <span class="caret"></span></button>
                         <ul id="pick-lang-list" class="dropdown-menu" role="menu" aria-labelledby="langauges">
-                            <li  ng-repeat="language in languages"  ng-model="newNote.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
+                            <li  ng-repeat="language in languages"  ng-model="noteToEdit.noteLanguage" ng-click="toggleLanguage(language)" role="presentation">
                                 <a role="menuitem" tabindex="-1" href="#">{{language.language}} <span ng-if="language.isSelected"> &nbsp; <i class="fa fa-check-square"aria-hidden="true"></i> </span></a>
                             </li>
                         </ul>
@@ -617,13 +617,13 @@
                     <div class="form-group">
                         <label for="code"> Code:
                         </label>
-                        <textarea rows="8" class="form-control" id="edit-code" ng-model="noteToEdit.noteCode" value="noteToEdit.noteCode"></textarea>
+                        <textarea rows="8" class="form-control" id="code" ng-model="noteToEdit.noteCode" value="noteToEdit.noteCode"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="text"> Text/Comments:
                         </label>
-                        <textarea rows="8" class="form-control" id="edit-text" ng-model="noteToEdit.noteText" value="noteToEdit.noteText"></textarea>
+                        <textarea rows="8" class="form-control" id=text" ng-model="noteToEdit.noteText" value="noteToEdit.noteText"></textarea>
                     </div>
 
                 </form>
@@ -694,7 +694,7 @@
             </div>
 
             <div class="modal-footer">
-                <button ng-click="saveEditNote()" class="btn btn-success" id="EditNote" value="Create Notes">Save Edit</button>
+                <button ng-click="editNote(noteToEdit.id)" class="btn btn-success" id="addNote" value="Create Notes">Save Edit</button>
             </div>
 
         </div>
