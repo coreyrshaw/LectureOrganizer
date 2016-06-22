@@ -61,6 +61,17 @@ public class Note {
     @Column (nullable = false)
     String noteCode;
 
+    public String getNoteLink() {
+        return noteLink;
+    }
+
+    public void setNoteLink(String noteLink) {
+        this.noteLink = noteLink;
+    }
+
+    @Column (nullable = false)
+    String noteLink;
+
 
     public String getNoteTitle() {
         return noteTitle;
@@ -105,11 +116,12 @@ public class Note {
     public Note() {
     }
 
-    public Note(String noteText, String noteCode, String noteTitle, User user) {
+    public Note(String noteText, String noteCode, String noteTitle, String noteLink, User user) {
         this.noteCode = noteCode;
         this.noteText = noteText;
         this.user = user;
         this.noteTitle = noteTitle;
+        this.noteLink = noteLink;
     }
 }
 
