@@ -70,7 +70,7 @@ public class LectureOrganizerController {
                     noteOne.setNoteTitle("Note One Test");
 
                     ArrayList<Tag> tagList = new ArrayList<Tag>();
-                    Iterable<Tag> allTags = tags.find;
+                    Iterable<Tag> allTags = tags.findAll();
                     for (Tag tags : allTags) {
                         tagList.add(tags);
                     }
