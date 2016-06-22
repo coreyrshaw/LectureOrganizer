@@ -6,23 +6,25 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/f205e83315.js"></script>
 
-    <script type="text/javascript">
+  <!--   <script type="text/javascript">
     $(document).on("click", ".open-deleteNote", function () {
     var noteToDelete = $(this).data('note.id');
     console.log("about to delete the following note" + noteToDelete");
     $("modal-body #noteId").val( noteToDelete );
 
     });
-    </script>
+    </script> -->
     <style>
     .note-box{
       border-style: solid;
-      border-size: 2px;
-      border-color: grey;
-      margin: auto;
-      width: 70%;
-      height: 500px;
-      border-radius: 10px;
+      border-size: .5px;
+      border-color: #D8D8D8;
+      float: right;
+      width:85%;
+      height: 80%;
+      padding-top: 0px !important;
+      display: block;
+      
       }
 
       #topics{
@@ -48,26 +50,27 @@
       .searchparams {
       width: 15%;
       float: left;
-      height: 85%;
-      border-right:solid grey 2px;
-      border-bottom:solid grey 2px;
-      padding: 0px; !important
-
+      height: 20%;
+      padding: 0px !important;
       }
+
       .notePreviewTitle{
 
 
       }
       #note-list{
       overflow-y: scroll;
-      width: 85%;
+      width: 100%;
       height: 85%;
-      border-bottom:solid grey 2px;
-      float: right;
+      margin: auto;
+
       }
 
       #button-holder{
-      width: 85%;
+      border-top-style: solid;
+      border-top-size: 1px;
+      border-top-color: #D8D8D8;
+      width: 100%;
       float:right;
       height: 15%;
       }
@@ -232,25 +235,49 @@
       width: 100% !important;
       padding: 0px !important;
       }
+
       .notes-table-body{
-      height: 100px !important;
-      width: 100px !important;
+      height: 100% !important;
+      width: 100% !important;
       }
+
       .table-holder{
-      background-color:red;
+      background-color:white;
       width: 100%;
       height: 100%;
       }
 
+      .login-logoutbar{
+        float:right;
+        width:20%;
+        height: 10%;
+        padding-left: 5px;
+        background-color: white;
+        padding-top: 15px;
+
+      }
+
+      .header{
+        background-color: white;
+        margin:auto;
+        width:100%;
+        height: 5%;
+
+      }
 
       .table-fixed thead {
        width: 70%;
       }
       .table-fixed tbody {
        height: 100%;
-       overflow-y: auto;
+       overflow-y: scroll;
        width: 100%;
       }
+
+      .notes-body{
+      overflow-y: auto;
+      }
+
       .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
       display: block;
       }
@@ -258,48 +285,152 @@
        float: left;
        border-bottom-width: 0;
       }
+      .search-bar{
+        background-color: white;
+        height: 8%;
+        margin:auto;
+        width:100%;
+        padding-right: 70px;
+        
+
+      }
+      .logout-button{
+       float:right;
+       padding-right: 10px !important;
+      }
+      .welcome-message{
+        float: left;
+        padding-left: 40px;
+        padding-top: 8px;
+      }
+      .footer{
+        background-color: green;
+        margin:auto;
+        width: 100%;
+        height:10%;
+      }
+      .search-bar-box{
+        background-color: white;
+        float:right;
+      }
+      .search-object{
+        float:right;
+        padding-right: 20px !important;
+      }
+
+      .search-box{
+        float:right;
+        width: 70%;
+        height: 100%;
+        padding: 0px !important;
+        padding-top: 5px !important;
+      }
+      .top-bar{
+        background-color: white;
+        width:100%;
+        height:5%;
+        padding-bottom: 20px;
+      }
+      .search-button-icon{
+     
+      }
+      .search-button{
+        float:right;
+        height: 60px !important;
+        width:40px;
+        padding-left: 5px !important;
+      }
+
+      .user-email{
+        float: right;
+      }
+
+      .welcome-text{
+      
+        float: left;
+      }
+
+      .main-menu{
+        background-color:white !important;
+      }
 
   </style>
     </head>
 
-<body ng-controller="SampleController">
+<body class="notes-body" ng-controller="SampleController">
 {{! changing the mustache delimiter so it doesn't conflict with  }}
 {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
 {{=<% %>=}}
-<div class="login-logoutbar">
 
-    Welcome, <%user.email%>!
-
+<nav class="navbar navbar-default main-menu">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="https://github.com/coreyrshaw/LectureOrganizer"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+    </ul>
+    <div class="login-logoutbar">
+        <div class="welcome-message">
+         Welcome, <div class="user-email text-success"> <%user.email%>!</div>
+        </div>
         <form action="/logout" method="post">
-            <button type="submit">Logout</button>
-        </form>
-        <br><br>
+          <button class="btn btn-success logout-button" type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
+        </form>    
+      </div>
+  </div>
+</nav
+
+<!-- header Starts -->
+<div class="header">
+ 
+
+</div>
+<!-- header ends here -->
+
+
+<!-- search bar starts here -->
+<div class="search-bar">
+  <form>
+  <div class="search-button">
+    <button class="btn btn-success" type="submit"><i class="fa fa-search search-button-icon fa-2x" aria-hidden="true"></i></button>
+    </div>
+    <div class="form-group search-box">
+    <input type="text" placeholder="Search By Entering a Topic Or Langauge" class="form-control">
+    </div> 
+    
+  </form>
+</div>
+<!-- search bar ends here -->
+
+<div class="top-bar">
 
 </div>
 
+<!--Search paramaters container starts here-->
+<div class="container searchparams">
 
-<div class="note-box">
-
-    <div class="container searchparams">
-
-        <div class="dropdown" id="topicsthing">
-            <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topics" data-toggle="dropdown">Topics
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-                <li ng-repeat="tag in tags" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
-            </ul>
-        </div>
-
-
-        <div class="dropdown">
-            <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="langauges" data-toggle="dropdown"><L>Languages</L>
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="langauges">
-                <li ng-repeat="language in languages" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
-            </ul>
-        </div>
+    <div class="dropdown" id="topicsthing">
+        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topics" data-toggle="dropdown">Topics
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
+            <li ng-repeat="tag in tags" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
+        </ul>
     </div>
 
+
+    <div class="dropdown">
+        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="langauges" data-toggle="dropdown"><L>Languages</L>
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="langauges">
+            <li ng-repeat="language in languages" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
+        </ul>
+    </div>
+</div>
+<!--Search paramaters container ends here-->
+
+<!-- Note container starts here -->
+<div class="container note-box">
     <div class="container" id="note-list">
      <span ng-repeat="note in notes">
          <div class="panel-group">
@@ -368,13 +499,12 @@
     </div>
 
     <div class="container" id="button-holder">
-        <button type="button" class="btn btn-success btn-lg" ng-click="getNotes()" id="getNote">Get Notes</button>
         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#addNoteModal" id="openAddNote">Add Note</button>
     </div>
+</div> 
+<!--Note container ends here
 
-    </div>
-
-
+<!--Modal for add note starts here-->
 </div>
 <div id="addNoteModal" class="modal fade" role="dialog">
     <div class="modal-dialog addNoteModal">
@@ -390,12 +520,6 @@
                       </label>
                     <input type="text" class="form-control" id="title" ng-model="newNote.noteTitle">
                     </div>
-
-                    <!--<div class="form-group">-->
-                    <!--<label for="date"> Date:-->
-                    <!--</label>-->
-                    <!--<input type="date" class="form-control" id="date" ng-model="newNote.created_at">-->
-                    <!--</div>-->
 
                     <div class="space">
                     </div>
@@ -525,11 +649,9 @@
                 <!--<button ng-click="previewNote()" class="btn btn-success" id="previewNote" data-toggle="modal" data-target="#previewNoteModal">Preview Note</button>-->
                 <button ng-click="addNote()" class="btn btn-success" id="addNote" value="Create Notes">Add Note</button>
             </div>
-
         </div>
         </div>
-
-    </div>
+</div>
 
 
 <div id="deleteNoteModal" class="modal fade" role="dialog">
@@ -700,10 +822,13 @@
         </div>
     </div>
 </div>
-<div class="footer">
+
+<div class="bottom">
 
 </div>
 
+
 </body>
+
 
 </html>
