@@ -1,11 +1,7 @@
 package tiy.lecture.organizer;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -15,30 +11,38 @@ public class Note {
     @ManyToMany
     private Collection<Tag> tags;
 
-    @ManyToMany
-    private Set<Language>languages;
+    public Collection<Tag> getTags() {
+        return tags;
+    }
 
-    public Set<Language> getLanguages() {
+    public void setTags(Collection<Tag> tags) {
+        this.tags = tags;
+    }
+
+    @ManyToMany
+    private Collection<Language>languages;
+
+    public Collection<Language> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(Set<Language> languages) {
+    public void setLanguages(Collection<Language> languages) {
         this.languages = languages;
     }
 
-    public void addLanguage(Language language) {
-        if (languages == null) {
-            languages = new HashSet<Language>();
-        }
-
-        languages.add(language);
-    }
-
-    public void removeLanguage(Language language) {
-        if (languages != null) {
-            languages.remove(language);
-        }
-    }
+//    public void addLanguage(Language language) {
+//        if (languages == null) {
+//            languages = new HashSet<Language>();
+//        }
+//
+//        languages.add(language);
+//    }
+//
+//    public void removeLanguage(Language language) {
+//        if (languages != null) {
+//            languages.remove(language);
+//        }
+//    }
 
     @ManyToOne
     User user;
@@ -74,13 +78,6 @@ public class Note {
         this.user = user;
     }
 
-
-
-
-    public Note() {
-
-    }
-
     public int getId() {
         return id;
     }
@@ -105,21 +102,14 @@ public class Note {
         this.noteCode = noteCode;
     }
 
-
+    public Note() {
+    }
 
     public Note(String noteText, String noteCode, String noteTitle, User user) {
         this.noteCode = noteCode;
         this.noteText = noteText;
         this.user = user;
         this.noteTitle = noteTitle;
-    }
-
-    public Collection<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(Collection<Tag> tags) {
-        this.tags = tags;
     }
 }
 

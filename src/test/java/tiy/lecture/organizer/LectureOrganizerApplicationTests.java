@@ -148,7 +148,7 @@ public class LectureOrganizerApplicationTests {
 		System.out.println("==============" + language.id + " " + languagesFound.id);
 		assertEquals(language.id, languagesFound.id);
 //		Language noteLanguage = note.;
-		note.addLanguage(language);
+//		note.addLanguage(language);
 		notes.save(note);
 
 

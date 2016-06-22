@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class LectureOrganizerController {
@@ -26,20 +27,6 @@ public class LectureOrganizerController {
 
     @PostConstruct
     public void init() {
-        if (users.count() == 0) {
-            User user = new User();
-            user.email = "Admin";
-            user.password = "test123";
-            user.cohort = "TIY";
-            user.firstName = "Admin";
-            user.lastName = "Admin";
-            users.save(user);
-
-        }
-    }
-
-    @PostConstruct
-    public void addTopicsDef()  {
         if(tags.count() ==0) {
             Tag tag = new Tag();
             tag.name = "Heroku";
@@ -50,27 +37,60 @@ public class LectureOrganizerController {
             tags.save(tagThree);
             tags.save(tagTwo);
             tags.save(tag);
-        }
-    }
 
-    @PostConstruct
-    public void addLanguages() {
-        if(languages.count()==0) {
-            Language language = new Language("Java");
-            Language languageTwo = new Language("Java Fx");
-            Language languageThree = new Language("PHP");
-            Language languageFour = new Language("CSS");
-            Language languageFive = new Language("Phython");
-            Language languageSix = new Language("SQL");
-            Language languageSeven = new Language("Html");
-            languages.save(language);
-            languages.save(languageTwo);
-            languages.save(languageThree);
-            languages.save(languageFour);
-            languages.save(languageFive);
-            languages.save(languageSix);
-            languages.save(languageSeven);
+
+            if(languages.count()==0) {
+                Language language = new Language("Java");
+                Language languageTwo = new Language("Java Fx");
+                Language languageThree = new Language("PHP");
+                Language languageFour = new Language("CSS");
+                Language languageFive = new Language("Phython");
+                Language languageSix = new Language("SQL");
+                Language languageSeven = new Language("Html");
+                languages.save(language);
+                languages.save(languageTwo);
+                languages.save(languageThree);
+                languages.save(languageFour);
+                languages.save(languageFive);
+                languages.save(languageSix);
+                languages.save(languageSeven);
+            }
+            if (users.count() == 0) {
+                User user = new User();
+                user.email = "Admin";
+                user.password = "test123";
+                user.cohort = "TIY";
+                user.firstName = "Admin";
+                user.lastName = "Admin";
+                users.save(user);
+
+
+                if (notes.count() == 0) {
+                    Note noteOne = new Note();
+                    noteOne.setNoteTitle("Note One Test");
+
+                    ArrayList<Tag> tagList = new ArrayList<Tag>();
+                    Iterable<Tag> allTags = tags.find;
+                    for (Tag tags : allTags) {
+                        tagList.add(tags);
+                    }
+                    noteOne.setTags(tagList);
+
+                    ArrayList<Language> languageList = new ArrayList<Language>();
+                    Iterable<Language> allLanguages = languages.findAll();
+                    for (Language languages : allLanguages) {
+                        languageList.add(languages);
+                    }
+                    noteOne.setLanguages(languageList);
+
+                    noteOne.setNoteCode("System.out.println(\"Hello World\")");
+                    noteOne.setNoteText("Test Comment");
+                    noteOne.setUser(user);
+                    notes.save(noteOne);
+                }
+            }
         }
+
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)

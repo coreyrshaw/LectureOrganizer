@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface TagRepository extends CrudRepository<Tag, Integer> {
 
-//    @Query("SELECT g FROM Note g WHERE g.getNotes Like ?1% ")
-//List<Note>findByNote(String noteTag);
+    @Query("SELECT g FROM Tag g WHERE g.name Like ?1% ")
+    List<Tag>findByTag(Tag tag);
 }
