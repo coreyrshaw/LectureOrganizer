@@ -8,13 +8,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = LectureOrganizerApplication.class)
@@ -254,4 +253,53 @@ public class LectureOrganizerApplicationTests {
 		notes.delete(note2);
 	}
 
+	@Test
+	public void testFindByTags() throws Exception {
+
+		Tag noteTag2 = new Tag("tag1");
+		tags.save(noteTag2);
+		// now I have all tags in tagArrayList ...
+
+		String noteTitle = "primitivetype";
+		String noteTag = "Spring";
+		String noteLanguage = "Java";
+		String noteCode = "double";
+		String noteText = "Learning about doubles";
+
+		String firstName = "Sulton";
+		String lastName = "Elhadi";
+		String email = "elhadi.sulton@gmail.com";
+		String password = "sultone";
+		String cohort = "Iron Yard";
+
+
+
+		User user = new User(email, password, cohort, firstName, lastName);
+		users.save(user);
+
+		Note note = new Note(noteText, noteCode, noteTitle, user);
+
+		ArrayList<Tag> tagCollection = new ArrayList<Tag>();
+		tagCollection.add(noteTag2);
+
+		note.setTags(tagCollection);
+
+		notes.save(note);
+
+		int noteID = note.getId();
+		assertNotEquals(0, noteID);
+
+		Note retrievedNote = notes.findOne(noteID);
+		assertNotNull(retrievedNote);
+		assertNotNull(retrievedNote.getTags());
+
+		List<Note> foundNotes = notes.findByTags(tagCollection);
+		assertNotNull(foundNotes);
+		assertEquals(1, foundNotes.size());
+
+		notes.delete(note);
+		tags.delete(noteTag2);
+		users.delete(user);
+
+	}
 }

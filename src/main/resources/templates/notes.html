@@ -343,6 +343,7 @@
 
       .user-email{
         float: right;
+        padding-left: 5px !important;
       }
 
       .welcome-text{
@@ -372,7 +373,7 @@
     </ul>
     <div class="login-logoutbar">
         <div class="welcome-message">
-         Welcome, <div class="user-email text-success"> <%user.email%>!</div>
+         Welcome,  <div class="user-email text-success">  <%user.email%>!</div>
         </div>
         <form action="/logout" method="post">
           <button class="btn btn-success logout-button" type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
@@ -412,9 +413,11 @@
 
     <div class="dropdown" id="topicsthing">
         <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topics" data-toggle="dropdown">Topics
-            <span class="caret"></span></button>
+            <span class="caret"></span>
+        </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-            <li ng-repeat="tag in tags" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
+            <li ng-repeat="tag in tags" role="presentation" ng-click="getTaggedNotes(tag)">
+                <a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
         </ul>
     </div>
 
@@ -423,7 +426,8 @@
         <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="langauges" data-toggle="dropdown"><L>Languages</L>
             <span class="caret"></span></button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="langauges">
-            <li ng-repeat="language in languages" role="presentation"><a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
+            <li ng-repeat="language in languages" role="presentation" ng-click="getLanguageNotes(language)">
+                <a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
         </ul>
     </div>
 </div>

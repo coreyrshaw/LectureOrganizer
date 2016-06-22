@@ -2,8 +2,9 @@ package tiy.lecture.organizer;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note,Integer> {
@@ -26,5 +27,11 @@ public interface NoteRepository extends CrudRepository<Note,Integer> {
     List<Note>findByNoteStartWith(String note);
 
     @Query("SELECT g FROM Tag g WHERE g.name Like ?1% ")
-   List<Note>findByTag(Tag tag);
+    List<Note>findByTag(Tag tag);
+
+    @Query("SELECT g FROM Note g INNER JOIN g.tags gt WHERE gt IN (:tags)")
+    List<Note>findByTags(@Param("tags") Collection<Tag> tags);
+
+    @Query("SELECT g FROM Note g INNER JOIN g.languages gt WHERE gt IN (:languages)")
+    List<Note>findByLanguages(@Param("languages") Collection<Language> languages);
 }

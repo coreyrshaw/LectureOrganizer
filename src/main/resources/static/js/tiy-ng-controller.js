@@ -1,6 +1,38 @@
 angular.module('TIYAngularApp', [])
    .controller('SampleController', function($scope, $http) {
 
+       $scope.getTaggedNotes = function(tag) {
+                console.log(tag);
+                console.log("getTaggedNote...");
+                $http.post("/tagNotes.json", tag)
+                               .then(
+                                function successCallback(response) {
+                                console.log(tag);
+                                console.log("getTaggedNotes to scope");
+                                $scope.notes = response.data;
+                                },
+
+                                function errorCallback(response) {
+                                    console.log("unable to get tagged notes")
+                                });
+       };
+
+       $scope.getLanguageNotes = function(language) {
+                console.log(language);
+                console.log("getLanguageNote...");
+                $http.post("/languageNotes.json", language)
+                               .then(
+                                function successCallback(response) {
+                                console.log(language);
+                                console.log("getLanguageNotes to scope");
+                                $scope.notes = response.data;
+                                },
+
+                                function errorCallback(response) {
+                                    console.log("unable to get language notes")
+                                });
+       };
+
        $scope.testNotes = function() {
            console.log("I am the testNotes() function");
            $scope.name = "testNotes() is in charge!";

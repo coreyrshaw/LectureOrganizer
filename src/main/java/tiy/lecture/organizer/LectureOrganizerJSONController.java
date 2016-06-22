@@ -23,6 +23,44 @@ public class LectureOrganizerJSONController {
     @Autowired
     LanguageRepository langs;
 
+    @RequestMapping(path = "/tagNotes.json", method = RequestMethod.POST)
+    public ArrayList<Note> getTaggedNote(HttpSession session, @RequestBody Tag tag) throws Exception {
+        System.out.println(tag.getId());
+
+        ArrayList<Note> tagNoteList = new ArrayList<Note>();
+        System.out.println(tagNoteList.size());
+
+        ArrayList<Tag> tagList = new ArrayList<Tag>();
+
+        tagList.add(tag);
+
+        Iterable<Note> allTaggedNotes = notes.findByTags(tagList);
+        for (Note tagNote : allTaggedNotes) {
+            tagNoteList.add(tagNote);
+        }
+        System.out.println(tagNoteList.size());
+        return tagNoteList;
+    }
+
+    @RequestMapping(path = "/languageNotes.json", method = RequestMethod.POST)
+    public ArrayList<Note> getLanguageNote(HttpSession session, @RequestBody Language language) throws Exception {
+        System.out.println(language.getId());
+
+        ArrayList<Note> tagNoteList = new ArrayList<Note>();
+        System.out.println(tagNoteList.size());
+
+        ArrayList<Language> languageList = new ArrayList<Language>();
+
+        languageList.add(language);
+
+        Iterable<Note> allTaggedNotes = notes.findByLanguages(languageList);
+        for (Note tagNote : allTaggedNotes) {
+            tagNoteList.add(tagNote);
+        }
+        System.out.println(tagNoteList.size());
+        return tagNoteList;
+    }
+
     @RequestMapping(path = "/notes.json", method = RequestMethod.GET)
     public ArrayList<Note> jsonNotes() throws Exception{
     ArrayList<Note> noteList = new ArrayList<Note>();
