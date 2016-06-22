@@ -85,6 +85,7 @@ public class LectureOrganizerController {
 
                     noteOne.setNoteCode("System.out.println(\"Hello World\")");
                     noteOne.setNoteText("Test Comment");
+                    noteOne.setNoteLink("https://lecture-organizer.herokuapp.com");
                     noteOne.setUser(user);
                     notes.save(noteOne);
                 }
