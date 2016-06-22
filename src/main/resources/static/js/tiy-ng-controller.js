@@ -33,6 +33,18 @@ angular.module('TIYAngularApp', [])
                                 });
        };
 
+        $scope.getSearchNotes = function(searchNoteTitle) {
+        console.log(searchNoteTitle);
+        console.log("Searching Notes...");
+        $http.post("/searchByName.json", searchNoteTitle)
+               .then(
+                function successCallback(response) {
+                console.log(response.data);
+                console.log("Adding data to scope");
+                $scope.notes = response.data;
+                })
+       };
+
        $scope.testNotes = function() {
            console.log("I am the testNotes() function");
            $scope.name = "testNotes() is in charge!";
@@ -64,7 +76,7 @@ angular.module('TIYAngularApp', [])
               } else {
                   console.log("Tags already on the UI");
               }
-       }
+       };
 
        $scope.getLanguages = function() {
               if($scope.languages == null){
@@ -84,7 +96,7 @@ angular.module('TIYAngularApp', [])
 
               }
 
-       }
+       };
        $scope.addNote = function() {
        var tagsToAdd = [];
        var languagesToAdd = [];
@@ -130,7 +142,7 @@ angular.module('TIYAngularApp', [])
                     console.log("unable to get data")
                 });
 
-       }
+       };
 
        $scope.editNote = function(noteID) {
        var tagsToAdd = [];
@@ -177,7 +189,7 @@ angular.module('TIYAngularApp', [])
                     console.log("unable to get data")
                 });
 
-       }
+       };
 
 
        $scope.deleteNote = function (noteID) {
@@ -195,17 +207,17 @@ angular.module('TIYAngularApp', [])
 
                });
 
-       }
+       };
 
        $scope.deleteNoteModal = function(noteID) {
        console.log("About to delete the following note " + noteID);
        $scope.noteToDelete = noteID;
-       }
+       };
 
        $scope.editNoteModal = function(note) {
        console.log("About to edit the following note: " + note);
        $scope.noteToEdit = note;
-       }
+       };
 
 //       $scope.getNoteTags = function(note.Tags) {
 //       console.log("This note has the following tags: " + note.Tags)
@@ -231,20 +243,18 @@ angular.module('TIYAngularApp', [])
        $scope.toggleTopic = function(tag) {
         console.log(tag);
         tag.isSelected = !tag.isSelected;
-       }
+       };
 
        $scope.toggleLanguage = function(language) {
         console.log(language);
         language.isSelected = !language.isSelected;
-       }
+       };
 
 
 
 
         console.log("SampleController ...");
-        $scope.name = "James";
-        $scope.newNote = {};
-
+        $scope.getNotes();
 
     });
 

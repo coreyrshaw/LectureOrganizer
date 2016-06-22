@@ -23,6 +23,18 @@ public class LectureOrganizerJSONController {
     @Autowired
     LanguageRepository langs;
 
+    @RequestMapping(path = "/searchByName.json", method = RequestMethod.POST)
+    public ArrayList<Note> getSearchNote(HttpSession session, @RequestBody String searchNoteTitle) throws Exception{
+        System.out.println(searchNoteTitle);
+        ArrayList<Note> noteList = new ArrayList<Note>();
+        Iterable<Note> allNotes = notes.findByTitle(searchNoteTitle);
+        for (Note note : allNotes) {
+            noteList.add(note);
+        }
+
+        return noteList;
+    }
+
     @RequestMapping(path = "/tagNotes.json", method = RequestMethod.POST)
     public ArrayList<Note> getTaggedNote(HttpSession session, @RequestBody Tag tag) throws Exception {
         System.out.println(tag.getId());

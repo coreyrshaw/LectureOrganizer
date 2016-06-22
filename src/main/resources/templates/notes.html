@@ -1,4 +1,5 @@
 <html lang="en-US" ng-app="TIYAngularApp">
+<head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="/js/tiy-ng-controller.js"></script>
@@ -356,7 +357,7 @@
       }
 
   </style>
-    </head>
+</head>
 
 <body class="notes-body" ng-controller="SampleController">
 {{! changing the mustache delimiter so it doesn't conflict with  }}
@@ -380,7 +381,7 @@
         </form>    
       </div>
   </div>
-</nav
+</nav>
 
 <!-- header Starts -->
 <div class="header">
@@ -393,12 +394,13 @@
 <!-- search bar starts here -->
 <div class="search-bar">
   <form>
-  <div class="search-button">
-    <button class="btn btn-success" type="submit"><i class="fa fa-search search-button-icon fa-2x" aria-hidden="true"></i></button>
+
+    <div class="search-button">
+        <button ng-click="getSearchNotes(searchNoteTitle)" class="btn btn-success" type="submit"><i class="fa fa-search search-button-icon fa-2x" aria-hidden="true"></i></button>
     </div>
     <div class="form-group search-box">
-    <input type="text" placeholder="Search By Entering a Topic Or Langauge" class="form-control">
-    </div> 
+        <input type="text" placeholder="Search By Entering a Note Title" class="form-control" id="title" ng-model="searchNoteTitle">
+    </div>
     
   </form>
 </div>
@@ -654,7 +656,7 @@
                 <button ng-click="addNote()" class="btn btn-success" data-dismiss="modal" id="addNote" value="Create Notes">Add Note</button>
             </div>
         </div>
-        </div>
+    </div>
 </div>
 
 
