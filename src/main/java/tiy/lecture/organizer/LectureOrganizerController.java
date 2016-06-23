@@ -75,7 +75,7 @@ public class LectureOrganizerController {
 
             if(languages.count()==0) {
                 Language language = new Language("Java");
-                Language languageTwo = new Language("Java Fx");
+                Language languageTwo = new Language("JavaFX");
                 Language languageThree = new Language("Javascript");
                 Language languageFour = new Language("HTML");
                 Language languageFive = new Language("CSS");
@@ -114,25 +114,101 @@ public class LectureOrganizerController {
                     Note noteOne = new Note();
                     noteOne.setNoteTitle("Command");
 
-                    ArrayList<Tag> tagList = new ArrayList<Tag>();
-                    Iterable<Tag> allTags = tags.findByTag("Class");
-                    for (Tag tags : allTags) {
-                        tagList.add(tags);
+                    ArrayList<Tag> noteOneTagList = new ArrayList<Tag>();
+                    Iterable<Tag> noteOneTags = tags.findByTag("Class");
+                    for (Tag tags : noteOneTags) {
+                        noteOneTagList.add(tags);
                     }
-                    noteOne.setTags(tagList);
+                    noteOne.setTags(noteOneTagList);
 
-                    ArrayList<Language> languageList = new ArrayList<Language>();
-                    Iterable<Language> allLanguages = languages.findByLanguage("Java");
-                    for (Language languages : allLanguages) {
-                        languageList.add(languages);
+                    ArrayList<Language> noteOneLanguageList = new ArrayList<Language>();
+                    Iterable<Language> noteOneLanguages = languages.findByLanguage("Java");
+                    for (Language languages : noteOneLanguages) {
+                        noteOneLanguageList.add(languages);
                     }
-                    noteOne.setLanguages(languageList);
+                    noteOne.setLanguages(noteOneLanguageList);
 
                     noteOne.setNoteCode("System.out.println(\"Hello World\")");
-                    noteOne.setNoteText("System: class" + System.lineSeparator() + "out: object - instance of a class");
-                    noteOne.setNoteLink("https://lecture-organizer.herokuapp.com");
+                    noteOne.setNoteText("System: class; out: object - instance of a class");
+                    noteOne.setNoteLink("https://online.theironyard.com/paths/185/units/960/lessons/2861");
                     noteOne.setUser(user);
                     notes.save(noteOne);
+
+
+                        Note noteTwo = new Note();
+                        noteTwo.setNoteTitle("ArrayList");
+
+                        ArrayList<Tag> noteTwoTagList = new ArrayList<Tag>();
+                        Iterable<Tag> noteTwoTags = tags.findByTag("Dynamic Data Structures");
+                        for (Tag tags : noteTwoTags) {
+                            noteTwoTagList.add(tags);
+                        }
+                        noteTwo.setTags(noteTwoTagList);
+
+                        ArrayList<Language> noteTwoLanguageList = new ArrayList<Language>();
+                        Iterable<Language> noteTwoLanguages = languages.findByLanguage("Java");
+                        for (Language languages : noteTwoLanguages) {
+                            noteTwoLanguageList.add(languages);
+                        }
+                        noteTwo.setLanguages(noteTwoLanguageList);
+
+                        noteTwo.setNoteCode("ArrayList<Language> noteTwoLanguageList = new ArrayList<Language>();");
+                        noteTwo.setNoteText("Resizable-array implementation of the List interface");
+                        noteTwo.setNoteLink("https://online.theironyard.com/paths/185/units/1133/lessons/4040");
+                        noteTwo.setUser(user);
+                        notes.save(noteTwo);
+
+                    Note noteThree = new Note();
+                    noteThree.setNoteTitle("SQL");
+
+                    ArrayList<Tag> noteThreeTagList = new ArrayList<Tag>();
+                    Iterable<Tag> noteThreeTags = tags.findByTag("Database");
+                    for (Tag tags : noteThreeTags) {
+                        noteThreeTagList.add(tags);
+                    }
+                    noteThree.setTags(noteTwoTagList);
+
+                    ArrayList<Language> noteThreeLanguageList = new ArrayList<Language>();
+                    Iterable<Language> noteThreeLanguages = languages.findByLanguage("Java");
+                    for (Language languages : noteThreeLanguages) {
+                        noteThreeLanguageList.add(languages);
+                    }
+                    noteThree.setLanguages(noteThreeLanguageList);
+
+                    noteThree.setNoteCode("@Query(\"SELECT g FROM Note g WHERE g.noteTitle LIKE ?1%\")\n" +
+                            "    List<Note>findByNameStartsWith(String noteTitle);");
+                    noteThree.setNoteText("Relational Database: organize data into tables with rows & columns");
+                    noteThree.setNoteLink("https://online.theironyard.com/paths/185/units/1493/lessons/5563");
+                    noteThree.setUser(user);
+                    notes.save(noteThree);
+
+                        Note noteFour = new Note();
+                        noteFour.setNoteTitle("Canvas");
+
+                        ArrayList<Tag> noteFourTagList = new ArrayList<Tag>();
+                        Iterable<Tag> noteFourTags = tags.findByTag("Spring");
+                        for (Tag tags : noteFourTags) {
+                            noteFourTagList.add(tags);
+                        }
+                        noteFour.setTags(noteFourTagList);
+
+                        ArrayList<Language> noteFourLanguageList = new ArrayList<Language>();
+                        Iterable<Language> noteFourLanguages = languages.findByLanguage("Java");
+                        for (Language languages : noteFourLanguages) {
+                            noteFourLanguageList.add(languages);
+                        }
+                        Iterable<Language> noteFourLanguagesTwo = languages.findByLanguage("JavaFX");
+                        for (Language languages : noteFourLanguagesTwo) {
+                            noteFourLanguageList.add(languages);
+                        }
+                        noteFour.setLanguages(noteFourLanguageList);
+
+                        noteFour.setNoteCode("@Override\n" +
+                                "    public void start(Stage primaryStage) throws Exception {}");
+                        noteFour.setNoteText("The JavaFX Canvas API provides a custom texture that you can write to.");
+                        noteFour.setNoteLink("https://online.theironyard.com/paths/185/units/1248/lessons/4341");
+                        noteFour.setUser(user);
+                        notes.save(noteFour);
                 }
             }
         }
