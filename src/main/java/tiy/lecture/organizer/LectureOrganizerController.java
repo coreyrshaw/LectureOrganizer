@@ -32,6 +32,7 @@ public class LectureOrganizerController {
             Tag tagTwo = new Tag("SQL");
             Tag tagThree = new Tag("Spring");
             Tag tagFour = new Tag("Binary");
+            Tag tagFive = new Tag("JavaFX");
             Tag tagSix = new Tag("Batch");;
             Tag tagEight = new Tag("Class");
             Tag tagTen = new Tag("Control Structures");
@@ -54,6 +55,7 @@ public class LectureOrganizerController {
             tags.save(tagTwo);
             tags.save(tag);
             tags.save(tagFour);
+            tags.save(tagFive);
             tags.save(tagSix);
             tags.save(tagEight);
             tags.save(tagTen);
@@ -75,7 +77,6 @@ public class LectureOrganizerController {
 
             if(languages.count()==0) {
                 Language language = new Language("Java");
-                Language languageTwo = new Language("JavaFX");
                 Language languageThree = new Language("Javascript");
                 Language languageFour = new Language("HTML");
                 Language languageFive = new Language("CSS");
@@ -88,7 +89,6 @@ public class LectureOrganizerController {
                 Language languageTwelve = new Language("Swift");
 
                 languages.save(language);
-                languages.save(languageTwo);
                 languages.save(languageThree);
                 languages.save(languageFour);
                 languages.save(languageFive);
@@ -190,6 +190,11 @@ public class LectureOrganizerController {
                         for (Tag tags : noteFourTags) {
                             noteFourTagList.add(tags);
                         }
+                        Iterable<Tag> noteFourTagsTwo = tags.findByTag("JavaFX");
+                        for (Tag tags : noteFourTagsTwo) {
+                            noteFourTagList.add(tags);
+                        }
+                        noteFour.setTags(noteFourTagList);
                         noteFour.setTags(noteFourTagList);
 
                         ArrayList<Language> noteFourLanguageList = new ArrayList<Language>();
@@ -197,7 +202,9 @@ public class LectureOrganizerController {
                         for (Language languages : noteFourLanguages) {
                             noteFourLanguageList.add(languages);
                         }
-                        Iterable<Language> noteFourLanguagesTwo = languages.findByLanguage("JavaFX");
+                        noteFour.setLanguages(noteFourLanguageList);
+
+                        Iterable<Language> noteFourLanguagesTwo = languages.findByLanguage("SQL");
                         for (Language languages : noteFourLanguagesTwo) {
                             noteFourLanguageList.add(languages);
                         }
@@ -209,6 +216,75 @@ public class LectureOrganizerController {
                         noteFour.setNoteLink("https://online.theironyard.com/paths/185/units/1248/lessons/4341");
                         noteFour.setUser(user);
                         notes.save(noteFour);
+
+                    Note noteFive = new Note();
+                    noteFive.setNoteTitle("Primmitive Types");
+
+                    ArrayList<Tag> noteFiveTagList = new ArrayList<Tag>();
+                    Iterable<Tag> noteFiveTags = tags.findByTag("Class");
+                    for (Tag tags : noteFiveTags) {
+                        noteFiveTagList.add(tags);
+                    }
+                    noteFive.setTags(noteFiveTagList);
+//                    Iterable<Tag> noteFourTagsTwo = tags.findByTag("JavaFX");
+//                    for (Tag tags : noteFourTagsTwo) {
+//                        noteFiveTagList.add(tags);
+//                    }
+//                    noteFive.setTags(noteFiveTagList);
+
+                    ArrayList<Language> noteFiveLanguageList = new ArrayList<Language>();
+                    Iterable<Language> noteFiveLanguages = languages.findByLanguage("Java");
+                    for (Language languages : noteFiveLanguages) {
+                        noteFiveLanguageList.add(languages);
+                    }
+                    noteFive.setLanguages(noteFiveLanguageList);
+
+//                    Iterable<Language> noteFourLanguagesTwo = languages.findByLanguage("SQL");
+//                    for (Language languages : noteFourLanguagesTwo) {
+//                        noteFourLanguageList.add(languages);
+//                    }
+//                    noteFive.setLanguages(noteFourLanguageList);
+
+                    noteFive.setNoteCode("int = 0; String primitiveType = \"string type\"");
+                    noteFive.setNoteText("There are 8 primitive types");
+                    noteFive.setNoteLink("http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html");
+                    noteFive.setUser(user);
+                    notes.save(noteFive);
+
+                    Note noteSix = new Note();
+                    noteSix.setNoteTitle("Sockets");
+
+                    ArrayList<Tag> noteSixTagList = new ArrayList<Tag>();
+                    Iterable<Tag> noteSixTags = tags.findByTag("Networking");
+                    for (Tag tags : noteSixTags) {
+                        noteSixTagList.add(tags);
+                    }
+                    noteSix.setTags(noteSixTagList);
+//                    Iterable<Tag> noteFourTagsTwo = tags.findByTag("JavaFX");
+//                    for (Tag tags : noteFourTagsTwo) {
+//                        noteFiveTagList.add(tags);
+//                    }
+//                    noteFive.setTags(noteFiveTagList);
+
+                    ArrayList<Language> noteSixLanguageList = new ArrayList<Language>();
+                    Iterable<Language> noteSixLanguages = languages.findAll();
+                    for (Language languages : noteSixLanguages) {
+                        noteSixLanguageList.add(languages);
+                    }
+                    noteSix.setLanguages(noteSixLanguageList);
+
+//                    Iterable<Language> noteFourLanguagesTwo = languages.findByLanguage("SQL");
+//                    for (Language languages : noteFourLanguagesTwo) {
+//                        noteFourLanguageList.add(languages);
+//                    }
+//                    noteFive.setLanguages(noteFourLanguageList);
+
+                    noteSix.setNoteCode("// start a server on a specific port \n" +
+                            "        ServerSocket serverListener = new ServerSocket(8005);");
+                    noteSix.setNoteText("A Socket in Java is something that allows us to communicate with another Java program over IP.");
+                    noteSix.setNoteLink("https://online.theironyard.com/paths/185/units/1328/lessons/4645");
+                    noteSix.setUser(user);
+                    notes.save(noteSix);
                 }
             }
         }
