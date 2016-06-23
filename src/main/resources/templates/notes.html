@@ -62,6 +62,9 @@
       margin: auto;
 
       }
+      .note{
+      padding-top: 10px !important;
+      }
 
       #button-holder{
       border-top-style: solid;
@@ -437,7 +440,10 @@
 <div class="container note-box">
     <div class="container" id="note-list">
      <span ng-repeat="note in notes">
-         <div class="panel-group">
+         <div class="space">
+
+         </div>
+         <div class="panel-group note" >
              <div class="panel panel-default">
                  <div class="panel-heading">
                      <h4 class="panel-title">
@@ -498,6 +504,9 @@
 
              </div>
          </div>
+          <div class="space">
+
+          </div>
 
      </span>
     </div>
