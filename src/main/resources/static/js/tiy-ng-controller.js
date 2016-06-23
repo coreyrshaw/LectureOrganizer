@@ -125,21 +125,21 @@ angular.module('TIYAngularApp', [])
        console.log("About to add the following title to our note: " + JSON.stringify($scope.newNote.noteTitle));
        console.log("About to add the following code to our note: " + JSON.stringify($scope.newNote.noteCode));
        console.log("About to add the following text/comment to our note: " + JSON.stringify($scope.newNote.noteText));
-       alert("just want to see the output ...");
+//       alert("just want to see the output ...");
        console.log("About to add the following note " + JSON.stringify($scope.newNote));
        $http.post("/addNote.json", $scope.newNote)
                 .then(
                 function successCallback(response) {
-                    alert("Got the response!");
+//                    alert("Got the response!");
                     console.log(response.data);
                     console.log("adding data to scope");
-                    alert("setting notes to new notes");
+//                    alert("setting notes to new notes");
                     $scope.notes = response.data;
-                    alert("notes added!");
+//                    alert("notes added!");
                 },
 
                 function errorCallback(response) {
-                    alert("got an error!");
+//                    alert("got an error!");
                     console.log("unable to get data")
                 });
 
