@@ -1,20 +1,16 @@
 <html lang="en-US" ng-app="TIYAngularApp">
 <head>
+    <link rel="stylesheet" href="css/dropdown-enhancement.css">
+    <link rel="stylesheet" href="css/bootstrap-markdown.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="/js/dropdown-enhancement.js"></script>
+    <script src="/js/bootstrap-markdown.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="/js/tiy-ng-controller.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/f205e83315.js"></script>
 
-  <!--   <script type="text/javascript">
-    $(document).on("click", ".open-deleteNote", function () {
-    var noteToDelete = $(this).data('note.id');
-    console.log("about to delete the following note" + noteToDelete);
-    $("modal-body #noteId").val( noteToDelete );
-
-    });
-    </script> -->
     <style>
     .note-box{
       border-style: solid;
@@ -65,6 +61,9 @@
       height: 85%;
       margin: auto;
 
+      }
+      .note{
+      padding-top: 10px !important;
       }
 
       #button-holder{
@@ -372,13 +371,15 @@
     <ul class="nav navbar-nav">
       <li><a href="https://github.com/coreyrshaw/LectureOrganizer"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
     </ul>
+
     <div class="login-logoutbar">
         <div class="welcome-message">
          Welcome,  <div class="user-email text-success">  <%user.email%>!</div>
         </div>
         <form action="/logout" method="post">
           <button class="btn btn-success logout-button" type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</button>
-        </form>    
+        </form>
+
       </div>
   </div>
 </nav>
@@ -411,25 +412,25 @@
 </div>
 
 <!--Search paramaters container starts here-->
+
 <div class="container searchparams">
 
-    <div class="dropdown" id="topicsthing">
-        <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topics" data-toggle="dropdown">Topics
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
-            <li ng-repeat="tag in tags" role="presentation" ng-click="getTaggedNotes(tag)">
-                <a role="menuitem" tabindex="-1" href="#">{{tag.name}}</a></li>
+    <div class="btn-group" id="topicsthing">
+        <button ng-click="getTags()" data-toggle="dropdown" class="btn btn-default dropdown-toggle" id="topics">Topics<span class="caret"></span></button>
+        <ul class="dropdown-menu no-close" role="menu" aria-labelledby="topics">
+            <li ng-repeat="tag in tags" role="menuitem" tabindex="-1" ng-click="getTaggedNotes(tag)">
+                <input type="checkbox" id="{{tag.id}}" name="{{tag.name}}" value="{{tag.name}}"><label for="{{tag.id}}">{{tag.name}}</label></li>
         </ul>
     </div>
 
 
-    <div class="dropdown">
-        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle" type="button" id="langauges" data-toggle="dropdown"><L>Languages</L>
+
+    <div class="btn-group" id="topicsthing">
+        <button ng-click="getLanguages()" class="btn btn-default dropdown-toggle"  id="langauges" id="topics" data-toggle="dropdown">Languages
             <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="langauges">
-            <li ng-repeat="language in languages" role="presentation" ng-click="getLanguageNotes(language)">
-                <a role="menuitem" tabindex="-1" href="#">{{language.language}}</a></li>
+        <ul class="dropdown-menu no-close" role="menu" aria-labelledby="langauges">
+            <li ng-repeat="language in languages" role="menuitem" tabindex="-1" ng-click="getLanguageNotes(language)">
+                <input type="checkbox" id="{{language.id}}" name="{{language.language}}" value="{{language.language}}"><label for="{{language.id}}">{{language.language}}</label></li>
         </ul>
     </div>
 </div>
@@ -439,7 +440,10 @@
 <div class="container note-box">
     <div class="container" id="note-list">
      <span ng-repeat="note in notes">
-         <div class="panel-group">
+         <div class="space">
+
+         </div>
+         <div class="panel-group note" >
              <div class="panel panel-default">
                  <div class="panel-heading">
                      <h4 class="panel-title">
@@ -500,6 +504,9 @@
 
              </div>
          </div>
+          <div class="space">
+
+          </div>
 
      </span>
     </div>
@@ -584,10 +591,23 @@
                     <div class="form-group">
                         <label for="text"> Text/Comments:
                         </label>
-                        <textarea rows="8" class="form-control" id="text"ng-model="newNote.noteText"></textarea>
+                        <textarea  rows="10" class="form-control" id="text" ng-model="newNote.noteText">
+                        </textarea>
+                        <hr/>
                     </div>
 
+
                 </form>
+
+                <!--<form>-->
+                    <!--<input name="title" type="text" placeholder="Title?" />-->
+                    <!--<textarea name="content" data-provide="markdown" rows="10"></textarea>-->
+                    <!--<label class="checkbox">-->
+                        <!--<input name="publish" type="checkbox"> Publish-->
+                    <!--</label>-->
+                    <!--<hr/>-->
+                    <!--<button type="submit" class="btn">Submit</button>-->
+                <!--</form>-->
 
                 <div class="panel-group">
                     <div class="panel panel-default">
@@ -755,6 +775,7 @@
                     </div>
 
                 </form>
+
 
                 <div class="panel-group">
                     <div class="panel panel-default">
