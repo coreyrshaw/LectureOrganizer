@@ -34,10 +34,47 @@ public class LectureOrganizerController {
             tagTwo.name = "SQL";
             Tag tagThree = new Tag();
             tagThree.name = "Spring";
+            Tag tagFour = new Tag("Binary");
+            Tag tagSix = new Tag("Batch");;
+            Tag tagEight = new Tag("Class");
+            Tag tagTen = new Tag("Control Structures");
+            Tag tagFourteen = new Tag("Static Data Structures");
+            Tag tagSeventeen = new Tag("File I/O");
+            Tag tagEighteen = new Tag("Dynamic Data Structures");
+            Tag tagTwenty = new Tag("JSON");
+            Tag tagTwentyTwo = new Tag("Getters & Setters");
+            Tag tagTwentyFour = new Tag("Interface");
+            Tag tagTwentyFive = new Tag("UI");
+            Tag tagTwentyEight = new Tag("Parse");
+            Tag tagThirtyOne = new Tag("Networking");
+            Tag tagThirtyFour = new Tag("Threads");
+            Tag tagThirtyFive = new Tag("Unit Test");
+            Tag tagThirtySix = new Tag("Git/GitHub");
+            Tag tagForty = new Tag("Android Studio");
+            Tag tagFortyOne = new Tag("Database");
+            Tag tagFortyFive = new Tag("Deployment");
             tags.save(tagThree);
             tags.save(tagTwo);
             tags.save(tag);
-
+            tags.save(tagFour);
+            tags.save(tagSix);
+            tags.save(tagEight);
+            tags.save(tagTen);
+            tags.save(tagFourteen);
+            tags.save(tagSeventeen);
+            tags.save(tagEighteen);
+            tags.save(tagTwenty);
+            tags.save(tagTwentyTwo);
+            tags.save(tagTwentyFour);
+            tags.save(tagTwentyFive);
+            tags.save(tagTwentyEight);
+            tags.save(tagThirtyOne);
+            tags.save(tagThirtyFour);
+            tags.save(tagThirtyFive);
+            tags.save(tagThirtySix);
+            tags.save(tagForty);
+            tags.save(tagFortyOne);
+            tags.save(tagFortyFive);
 
             if(languages.count()==0) {
                 Language language = new Language("Java");
@@ -47,6 +84,12 @@ public class LectureOrganizerController {
                 Language languageFive = new Language("Phython");
                 Language languageSix = new Language("SQL");
                 Language languageSeven = new Language("Html");
+                Language languageEight = new Language("AngularJS");
+                Language languageNine = new Language("C#");
+                Language languageTen = new Language("Javascript");
+                Language languageEleven = new Language("Ruby");
+                Language languageTwelve = new Language("Swift");
+
                 languages.save(language);
                 languages.save(languageTwo);
                 languages.save(languageThree);
@@ -54,6 +97,11 @@ public class LectureOrganizerController {
                 languages.save(languageFive);
                 languages.save(languageSix);
                 languages.save(languageSeven);
+                languages.save(languageEight);
+                languages.save(languageNine);
+                languages.save(languageTen);
+                languages.save(languageEleven);
+                languages.save(languageTwelve);
             }
             if (users.count() == 0) {
                 User user = new User();

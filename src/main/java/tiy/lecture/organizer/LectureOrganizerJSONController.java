@@ -27,7 +27,7 @@ public class LectureOrganizerJSONController {
     public ArrayList<Note> getSearchNote(HttpSession session, @RequestBody String searchNoteTitle) throws Exception{
         System.out.println(searchNoteTitle);
         ArrayList<Note> noteList = new ArrayList<Note>();
-        Iterable<Note> allNotes = notes.findByTitle(searchNoteTitle);
+        Iterable<Note> allNotes = notes.findByNameStartsWith(searchNoteTitle);
         for (Note note : allNotes) {
             noteList.add(note);
         }
