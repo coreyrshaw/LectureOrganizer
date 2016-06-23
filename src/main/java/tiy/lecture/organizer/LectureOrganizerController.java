@@ -129,8 +129,7 @@ public class LectureOrganizerController {
                     noteOne.setLanguages(languageList);
 
                     noteOne.setNoteCode("System.out.println(\"Hello World\")");
-                    String code = "System: class" + System.lineSeparator() + "out: object - instance of a class";
-                    noteOne.setNoteText(code);
+                    noteOne.setNoteText("System: class" + System.lineSeparator() + "out: object - instance of a class");
                     noteOne.setNoteLink("https://lecture-organizer.herokuapp.com");
                     noteOne.setUser(user);
                     notes.save(noteOne);
