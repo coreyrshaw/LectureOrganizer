@@ -74,6 +74,9 @@
       float:right;
       height: 15%;
       }
+      .preview-footer{
+      height:90px !important;
+      }
 
       #topicsthing{
       float:left;
@@ -197,7 +200,7 @@
       }
 
       .note-form{
-       height: 900px !important;
+       height: 950px !important;
 
       }
 
@@ -222,7 +225,19 @@
       height: 40px;
       }
 
+      #topic{
+      padding:0px !important;
+      width: 100%;
+      height: 40px;
+      }
+
       #pick-language{
+      padding:0px !important;
+      width: 100%;
+      height: 40px;
+      }
+
+      #language{
       padding:0px !important;
       width: 100%;
       height: 40px;
@@ -354,6 +369,8 @@
       .main-menu{
         background-color:white !important;
       }
+
+
 
   </style>
 </head>
@@ -493,6 +510,12 @@
                                      {{note.noteText}}
                                  </div>
                              </li>
+                             <div class="space">
+
+                             </div>
+
+
+                             <a href="{{note.noteLink}}" target="_blank"><button type="button" class="btn btn-success btn-lg btn-block" id="goTolink">Link/Lecture</button></a>
                          </ul>
                          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" ng-click="deleteNoteModal(note.id)" data-target="#deleteNoteModal" id="deleteNote">Delete Note</button>
                          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" ng-click="editNoteModal(note)" data-target="#editNoteModal"  id="editNote">Edit Note</button>
@@ -504,9 +527,6 @@
 
              </div>
          </div>
-          <div class="space">
-
-          </div>
 
      </span>
     </div>
@@ -596,6 +616,14 @@
                         <hr/>
                     </div>
 
+                    <div class="form-group">
+                        <label for="text"> Link:
+                        </label>
+                        <textarea  rows="1" class="form-control" id="link" ng-model="newNote.noteLink">
+                        </textarea>
+                        <hr/>
+                    </div>
+
 
                 </form>
 
@@ -662,9 +690,18 @@
                                             {{newNote.noteText}}
                                     </div>
                                 </li>
+                                <div class="space">
+
+                                </div>
+
+
+                                <a href="{{newNote.noteLink}}" target="_blank"><button type="button" class="btn btn-success btn-lg btn-block" id="goTolink">Link/Lecture</button></a>
+
                             </ul>
                             </div>
-                            <div class="panel-footer">Panel Footer</div>
+                            <div class="panel-footer preview-footer">
+                                <button ng-click="addNote()" class="btn btn-success" data-dismiss="modal" id="addNote" value="Create Notes">Add Note</button>
+                            </div>
                         </div>
 
                     </div>
@@ -700,7 +737,6 @@
 <div id="editNoteModal" class="modal fade" role="dialog">
     <div class="modal-dialog editNoteModal">
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title" style="text-align:center;">Edit Note</h4>
@@ -719,7 +755,6 @@
                     <div class="dropdown" id="topic-picker">
                         <button ng-click="getTags()" class="btn btn-default dropdown-toggle" type="button" id="topic" data-toggle="dropdown">Topics
                             <span class="caret">
-
                             </span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="topics">
@@ -728,6 +763,7 @@
                             </li>
                         </ul>
                     </div>
+
 
                     <div class="space">
 
@@ -772,6 +808,14 @@
                         <label for="text"> Text/Comments:
                         </label>
                         <textarea rows="8" class="form-control" id=text" ng-model="noteToEdit.noteText" value="noteToEdit.noteText"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text"> Link:
+                        </label>
+                        <textarea  rows="1" class="form-control" id="link" ng-model="noteToEdit.noteLink">
+                        </textarea>
+                        <hr/>
                     </div>
 
                 </form>
@@ -829,10 +873,14 @@
                                             {{noteToEdit.noteText}}
                                         </div>
                                     </li>
+                                    <div class="space">
+
+                                    </div>
+                                    <a href="{{noteToEdit.noteLink}}" target="_blank"><button type="button" class="btn btn-success btn-lg btn-block" id="goTolink">Link/Lecture</button></a>
                                 </ul>
                             </div>
-                            <div class="panel-footer">Panel Footer
-
+                            <div class="panel-footer preview-footer">
+                                <button ng-click="editNote(noteToEdit.id)" class="btn btn-success" data-dismiss="modal" id="addNote" value="Create Notes">Save Edit</button>
                             </div>
                         </div>
 
@@ -850,12 +898,14 @@
     </div>
 </div>
 
-<div class="bottom">
-
-</div>
 
 
 </body>
+
+
+<div class="bottom">
+
+</div>
 
 
 </html>
