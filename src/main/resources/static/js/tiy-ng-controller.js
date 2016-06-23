@@ -116,6 +116,7 @@ angular.module('TIYAngularApp', [])
                 languagesToAdd.push(language);
             }
        }
+       $scope.newNote.noteLink = "empty";
        $scope.newNote.tags = tagsToAdd;
        $scope.newNote.languages = languagesToAdd;
        console.log("About to add the following user to our note: " + JSON.stringify($scope.newUser));
