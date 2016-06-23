@@ -456,7 +456,7 @@
 <!-- Note container starts here -->
 <div class="container note-box">
     <div class="container" id="note-list">
-     <span ng-repeat="note in notes">
+     <span ng-repeat="note in notes | filter:searchNoteTitle">
          <div class="space">
 
          </div>
