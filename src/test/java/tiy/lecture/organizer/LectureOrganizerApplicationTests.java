@@ -52,6 +52,7 @@ public class LectureOrganizerApplicationTests {
 		String noteName = "Learning about doubles";
 		String noteTag = "dataTypes";
 		String noteLanguage = "Java";
+		String noteLink = "google.com";
 
 
 		String email = "elhadi.sulton@gmail.com";
@@ -65,7 +66,7 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject,  noteCode,  noteName, user);
+		Note note = new Note(noteSubject,  noteCode,  noteName, noteLink, user);
 		notes.save(note);
 
 		Note noteFound = notes.findOne(note.id);
@@ -129,6 +130,7 @@ public class LectureOrganizerApplicationTests {
 		String noteTitle = "UserInput";
 		String noteText = "hi";
 		String noteCode = "System.out";
+		String noteLink = "google.com";
 
 		String email = "elhadi.sulton@gmail.com";
 		String password = "sultone";
@@ -142,13 +144,13 @@ public class LectureOrganizerApplicationTests {
 		Language language = new Language(noteLang);
 		languages.save(language);
 
-		Note note = new Note(noteCode, noteTitle, noteText, user);
+		Note note = new Note(noteCode, noteTitle, noteText, noteLink, user);
 
 		Language languagesFound = languages.findOne(language.id);
 		System.out.println("==============" + language.id + " " + languagesFound.id);
 		assertEquals(language.id, languagesFound.id);
 //		Language noteLanguage = note.;
-		note.addLanguage(language);
+//		note.addLanguage(language);
 		notes.save(note);
 
 
@@ -200,6 +202,7 @@ public class LectureOrganizerApplicationTests {
 		String noteSubject = "primitivetype";
 		String noteName = "Learning about doubles";
 		String noteCode = "System.out";
+		String noteLink = "ironyard.com";
 
 		String email = "elhadi.sulton@gmail.com";
 		String password = "sultone";
@@ -210,6 +213,7 @@ public class LectureOrganizerApplicationTests {
 		String noteSubject2 = "UserInput";
 		String noteName2 = "Learning about input";
 		String noteCode2 = "user";
+		String noteLink2 = "yahoo.com";
 
 		String email2 = "josh@gmail.com";
 		String password2 = "joshe";
@@ -220,13 +224,13 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteSubject,  noteCode,  noteName, user);
+		Note note = new Note(noteSubject,  noteCode,  noteName,noteLink, user);
 		notes.save(note);
 
 		User user2 = new User(email2, password2, cohort2, firstName2, lastName2);
 		users.save(user2);
 
-		Note note2 = new Note(noteSubject2,  noteCode2,  noteName2, user2);
+		Note note2 = new Note(noteSubject2,  noteCode2,  noteName2,noteLink2, user2);
 		notes.save(note2);
 
 
@@ -265,6 +269,7 @@ public class LectureOrganizerApplicationTests {
 		String noteLanguage = "Java";
 		String noteCode = "double";
 		String noteText = "Learning about doubles";
+		String noteLink = "www.google.com";
 
 		String firstName = "Sulton";
 		String lastName = "Elhadi";
@@ -277,7 +282,7 @@ public class LectureOrganizerApplicationTests {
 		User user = new User(email, password, cohort, firstName, lastName);
 		users.save(user);
 
-		Note note = new Note(noteText, noteCode, noteTitle, user);
+		Note note = new Note(noteText, noteCode, noteTitle, noteLink, user);
 
 		ArrayList<Tag> tagCollection = new ArrayList<Tag>();
 		tagCollection.add(noteTag2);
