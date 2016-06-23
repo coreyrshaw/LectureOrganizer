@@ -28,12 +28,9 @@ public class LectureOrganizerController {
     @PostConstruct
     public void init() {
         if(tags.count() ==0) {
-            Tag tag = new Tag();
-            tag.name = "Heroku";
-            Tag tagTwo = new Tag();
-            tagTwo.name = "SQL";
-            Tag tagThree = new Tag();
-            tagThree.name = "Spring";
+            Tag tag = new Tag("Heroku");
+            Tag tagTwo = new Tag("SQL");
+            Tag tagThree = new Tag("Spring");
             Tag tagFour = new Tag("Binary");
             Tag tagSix = new Tag("Batch");;
             Tag tagEight = new Tag("Class");
@@ -79,14 +76,14 @@ public class LectureOrganizerController {
             if(languages.count()==0) {
                 Language language = new Language("Java");
                 Language languageTwo = new Language("Java Fx");
-                Language languageThree = new Language("PHP");
-                Language languageFour = new Language("CSS");
-                Language languageFive = new Language("Phython");
+                Language languageThree = new Language("Javascript");
+                Language languageFour = new Language("HTML");
+                Language languageFive = new Language("CSS");
                 Language languageSix = new Language("SQL");
-                Language languageSeven = new Language("Html");
+                Language languageSeven = new Language("Phython");
                 Language languageEight = new Language("AngularJS");
                 Language languageNine = new Language("C#");
-                Language languageTen = new Language("Javascript");
+                Language languageTen = new Language("PHP");
                 Language languageEleven = new Language("Ruby");
                 Language languageTwelve = new Language("Swift");
 
@@ -115,24 +112,24 @@ public class LectureOrganizerController {
 
                 if (notes.count() == 0) {
                     Note noteOne = new Note();
-                    noteOne.setNoteTitle("Note One Test");
+                    noteOne.setNoteTitle("Command");
 
                     ArrayList<Tag> tagList = new ArrayList<Tag>();
-                    Iterable<Tag> allTags = tags.findAll();
+                    Iterable<Tag> allTags = tags.findByTag("Class");
                     for (Tag tags : allTags) {
                         tagList.add(tags);
                     }
                     noteOne.setTags(tagList);
 
                     ArrayList<Language> languageList = new ArrayList<Language>();
-                    Iterable<Language> allLanguages = languages.findAll();
+                    Iterable<Language> allLanguages = languages.findByLanguage("Java");
                     for (Language languages : allLanguages) {
                         languageList.add(languages);
                     }
                     noteOne.setLanguages(languageList);
 
                     noteOne.setNoteCode("System.out.println(\"Hello World\")");
-                    noteOne.setNoteText("Test Comment");
+                    noteOne.setNoteText("System: class" + System.lineSeparator() + "out: object - instance of a class");
                     noteOne.setNoteLink("https://lecture-organizer.herokuapp.com");
                     noteOne.setUser(user);
                     notes.save(noteOne);
