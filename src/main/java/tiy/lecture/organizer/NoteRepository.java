@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note,Integer> {
 
-    @Query("SELECT g FROM Note g WHERE g.noteTitle LIKE ?1%")
+    @Query("SELECT g FROM Note g WHERE LOWER (g.noteTitle) LIKE ?1%")
     List<Note>findByTitle(String noteTitle);
 
     @Query("SELECT g FROM Note g WHERE g.id LIKE ?1")
